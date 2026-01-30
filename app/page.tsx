@@ -1,5 +1,24 @@
-import { ComponentExample } from "@/components/component-example";
+import { About } from '@/components/about';
+import { Contact } from '@/components/contact';
+import { Footer } from '@/components/footer';
+import { Hero } from '@/components/hero';
+import { Navbar } from '@/components/navbar';
+import { Projects } from '@/components/projects';
 
-export default function Page() {
-return <ComponentExample />;
+export default function Home() {
+  return (
+    <div className='min-h-screen bg-background font-sans selection:bg-primary/20 selection:text-primary'>
+      <Navbar />
+
+      <main>
+        <Hero />
+        <Projects />
+        <About />
+        <Contact />
+      </main>
+
+      <Footer />
+    </div>
+  );
 }
+
