@@ -9,10 +9,16 @@ import { CheckCircle2, Github, Linkedin, Loader2, Mail, Send } from 'lucide-reac
 import Link from 'next/link';
 
 export function Contact() {
-  const [state, handleSubmit] = useForm('xwvbdlpl');
+  const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID || '';
+  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
+
+  const [state, handleSubmit] = useForm(formId);
 
   return (
-    <section className='container max-w-6xl mx-auto px-4 py-6 border-t border-border/40' id='contact'>
+    <section
+      className='container max-w-6xl mx-auto px-4 py-6 border-t border-border/40'
+      id='contact'
+    >
       {/* KONZISZTENS HEADER (Balra igazítva, mint a többi) */}
       <div className='flex flex-col md:flex-row justify-between items-end mb-12 gap-4 md:gap-6'>
         <div className='space-y-2'>
@@ -39,7 +45,7 @@ export function Contact() {
                 <h3 className='text-2xl font-bold'>Message Sent!</h3>
                 <p className='text-muted-foreground max-w-md'>
                   Thanks for reaching out. I&apos;ve received your message and will get back to you
-                  at <strong>hello@csalex.dev</strong> as soon as possible.
+                  at <strong>{contactEmail}</strong> as soon as possible.
                 </p>
                 <Button variant='outline' onClick={() => window.location.reload()} className='mt-6'>
                   Send another message
@@ -149,13 +155,13 @@ export function Contact() {
 
             <div className='space-y-4'>
               <Link
-                href='mailto:hello@csalex.dev'
+                href={`mailto:${contactEmail}`}
                 className='flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors p-3 rounded-lg hover:bg-primary/5 -mx-3'
               >
                 <div className='bg-background p-2 rounded-full border border-border shrink-0'>
                   <Mail className='w-5 h-5 text-primary' />
                 </div>
-                <span className='font-medium text-sm break-all'>hello@csalex.dev</span>
+                <span className='font-medium text-sm break-all'>{contactEmail}</span>
               </Link>
 
               <Link

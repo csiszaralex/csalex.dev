@@ -7,6 +7,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export function Hero() {
+  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
+
   return (
     <section className='relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100vh-4rem)]'>
       {/* --- HÁTTÉR --- */}
@@ -60,13 +62,13 @@ export function Hero() {
             </Button>
           </Link>
 
-          <Link href='mailto:hello@csalex.dev'>
+          <Link href={`mailto:${contactEmail}`}>
             <Button
               variant='outline'
               size='lg'
               className='h-12 px-8 text-base font-mono rounded-full border-primary/20 hover:bg-primary/5 hover:text-primary transition-colors'
             >
-              hello@csalex.dev
+              {contactEmail}
             </Button>
           </Link>
         </div>
