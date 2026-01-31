@@ -1,8 +1,10 @@
 'use client';
 
+import appIcon from '@/app/icon.png';
 import { ModeToggle } from '@/components/mode-toggle';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function Navbar() {
@@ -14,6 +16,11 @@ export function Navbar() {
           href='/'
           className='font-bold text-xl tracking-tight flex items-center gap-1 hover:opacity-80 transition-opacity'
         >
+          <Image
+            src={appIcon}
+            alt='App Logo'
+            className='h-8 w-8 rounded-full object-cover border border-border/50'
+          />
           {/* Minimalista Logo */}
           <span className='text-foreground'>Alex</span>
           {/* A pont színe követi a témát (Narancs/Kék) */}
