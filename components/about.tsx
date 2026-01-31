@@ -13,29 +13,33 @@ export function About() {
       <div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-start'>
         {/* --- BAL OLDAL: BEMUTATKOZÁS --- */}
         <div className='space-y-8'>
-          {/* KONZISZTENS HEADER */}
           <div className='space-y-2'>
             <h2 className='text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-2'>
               About Me <span className='text-primary'>.</span>
             </h2>
             <p className='text-muted-foreground text-lg max-w-xl'>
-              Engineering philosophy and background.
+              Engineering philosophy & background.
             </p>
           </div>
 
           <div className='prose dark:prose-invert text-muted-foreground leading-relaxed space-y-4'>
             <p>
-              I am currently pursuing my <strong>M.S. in Computer Engineering</strong> at the
-              Budapest University of Technology and Economics (BME). My journey started with a
-              curiosity for how things work, which quickly evolved into a passion for building
-              scalable architectures.
+              I am currently pursuing my <strong>M.S. in Computer Engineering</strong> at BME. My
+              academic background includes researching <strong>decentralized data spaces</strong>{' '}
+              and trustworthy collaboration patterns, which grounded my understanding of complex
+              distributed systems.
             </p>
             <p>
-              As a <strong>Pragmatic Architect</strong>, I focus on the balance between code quality
-              and delivery speed. I don&apos;t just write code; I design systems that are maintainable,
-              efficient, and solve real business problems. Whether it&apos;s a high-throughput backend in{' '}
-              <strong>NestJS</strong> or an autonomous AI agent, my goal is always the same:
-              creating tangible value through engineering.
+              As a <strong>Product-Minded Engineer</strong>, I value clarity over cleverness. My
+              architectural sweet spot is the <strong>Modular Monolith</strong>: structured enough
+              to scale, but simple enough to maintain. I am obsessive about{' '}
+              <strong>code hygiene</strong>—enforcing strict standards to ensure the codebase
+              remains self-documenting and reliable.
+            </p>
+            <p>
+              Whether it&apos;s implementing <strong>graceful recovery mechanisms</strong> for
+              stateful services or optimizing data pipelines, I focus on engineering solutions that
+              survive contact with reality.
             </p>
           </div>
 
@@ -66,7 +70,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {['TypeScript', 'NestJS', 'Node.js', 'Python', 'FastAPI', 'Go'].map((s) => (
+                {['TypeScript', 'NestJS', 'Modular Monolith', 'Python', 'FastAPI'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'
@@ -87,14 +91,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {[
-                  'Google BigQuery',
-                  'LangChain',
-                  'MCP Protocol',
-                  'PostgreSQL',
-                  'Redis',
-                  'Vector DBs',
-                ].map((s) => (
+                {['Google BigQuery', 'MCP Protocol', 'PostgreSQL', 'Redis'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'

@@ -19,11 +19,10 @@ export function Projects() {
       category: 'High-Performance Architecture',
       description:
         'Real-time polling architecture handling high concurrency. Implements Clean Architecture with a robust NestJS backend and WebSockets.',
-      tech: ['NestJS', 'TypeScript', 'WebSockets', 'Redis'],
+      tech: ['NestJS', 'TypeScript', 'WebSockets', 'CI/CD'],
       link: 'https://github.com/csiszaralex/voter',
       status: 'Latest Build',
       icon: Server,
-      // Szín: Ciánkék/Kék (Stability & Tech)
       colorClass: 'text-cyan-500',
       bgClass: 'bg-cyan-500/10',
       borderClass: 'hover:border-cyan-500/50',
@@ -34,7 +33,7 @@ export function Projects() {
       category: 'R&D / Autonomous Systems',
       description:
         'Service orchestrator that dynamically registers MCP servers as callable tools. Features a dual-loop verification system for LLM accuracy.',
-      tech: ['Python', 'LangChain', 'MCP Protocol', 'Docker'],
+      tech: ['Python', 'MCP Protocol', 'Claude AI'],
       link: null,
       status: 'Research',
       icon: Bot,
@@ -147,7 +146,7 @@ export function Projects() {
                   <Badge
                     key={t}
                     variant='outline'
-                    className='bg-secondary/50 hover:bg-secondary text-xs text-muted-foreground hover:text-foreground transition-colors border-border/50'
+                    className='bg-secondary/50 hover:bg-secondary text-xs text-muted-foreground hover:text-foreground transition-colors border-border/50 cursor-default'
                   >
                     {t}
                   </Badge>

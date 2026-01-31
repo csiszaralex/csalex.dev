@@ -42,7 +42,7 @@ export function Hero() {
           <p className='text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed'>
             I am a{' '}
             <span className='font-semibold text-foreground underline decoration-primary/50 underline-offset-4'>
-              Pragmatic Architect
+              Product-Minded Engineer
             </span>
             . I bridge the gap between heavy engineering complexity and tangible business value.
           </p>
@@ -83,7 +83,6 @@ export function Hero() {
             <TechLogo name='Next.js' slug='nextdotjs' color='ffffff' className='' />
             <TechLogo name='Docker' slug='docker' color='2496ED' />
             <TechLogo name='Python' slug='python' color='3776AB' />
-            <TechLogo name='FastAPI' slug='fastapi' color='009688' />
           </div>
         </div>
       </div>
