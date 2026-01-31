@@ -7,10 +7,10 @@ import Link from 'next/link';
 export function About() {
   return (
     <section
-      className='container max-w-6xl mx-auto px-4 py-24 border-t border-border/40'
+      className='container max-w-6xl mx-auto px-4 py-6 border-t border-border/40'
       id='about'
     >
-      <div className='grid grid-cols-1 md:grid-cols-2 gap-12 items-start'>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start'>
         {/* --- BAL OLDAL: BEMUTATKOZÁS --- */}
         <div className='space-y-8'>
           <div className='space-y-2'>

@@ -60,13 +60,13 @@ export function Hero() {
             </Button>
           </Link>
 
-          <Link href='mailto:csiszaralex@gmail.com'>
+          <Link href='mailto:hello@csalex.dev'>
             <Button
               variant='outline'
               size='lg'
               className='h-12 px-8 text-base font-mono rounded-full border-primary/20 hover:bg-primary/5 hover:text-primary transition-colors'
             >
-              csiszaralex@gmail.com
+              hello@csalex.dev
             </Button>
           </Link>
         </div>

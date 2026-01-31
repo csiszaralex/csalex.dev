@@ -61,7 +61,7 @@ export function Projects() {
   ];
 
   return (
-    <section className='container max-w-6xl mx-auto px-4 py-24 relative' id='projects'>
+    <section className='container max-w-6xl mx-auto px-4 py-6 relative' id='projects'>
       {/* Háttér dekoráció (finom gradiens folt a szekció alatt) */}
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 bg-primary/5 blur-[120px] -z-10 rounded-full pointer-events-none' />
 
