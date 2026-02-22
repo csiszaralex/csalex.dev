@@ -44,7 +44,7 @@ export function About() {
           </div>
 
           <div className='pt-2'>
-            <Link href='/cv.pdf' target='_blank' rel='noopener noreferrer'>
+            <Link href='/CV.pdf' target='_blank' rel='noopener noreferrer'>
               <Button className='gap-2 rounded-full px-6 shadow-lg shadow-primary/10 hover:shadow-primary/20 h-12'>
                 <Download className='w-4 h-4' />
                 Download CV
