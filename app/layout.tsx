@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@/components/theme-provider';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Fira_Code, Inter } from 'next/font/google';
 import './globals.css';
 
@@ -13,9 +13,21 @@ const firaCode = Fira_Code({
   variable: '--font-mono',
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: 'Alex Csiszar',
   description: 'Portfolio of a Pragmatic Architect & FullStack Engineer.',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Alex Csiszar',
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
