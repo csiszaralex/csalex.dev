@@ -7,19 +7,7 @@ const withSerwist = withSerwistInit({
   disable: process.env.NODE_ENV !== 'production',
 });
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.simpleicons.org',
-      },
-    ],
-    dangerouslyAllowSVG: true, // Fontos a SimpleIcons SVG-k miatt
-    contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default withSerwist(nextConfig);
 

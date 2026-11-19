@@ -3,8 +3,8 @@
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
+import { siDocker, siNestjs, siNextdotjs, siPython, siTypescript, type SimpleIcon } from 'simple-icons';
 
 export function Hero() {
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
@@ -80,11 +80,12 @@ export function Hero() {
           </p>
 
           <div className='flex flex-wrap justify-center gap-8 md:gap-16'>
-            <TechLogo name='TypeScript' slug='typescript' color='3178C6' />
-            <TechLogo name='NestJS' slug='nestjs' color='E0234E' />
-            <TechLogo name='Next.js' slug='nextdotjs' color='ffffff' className='' />
-            <TechLogo name='Docker' slug='docker' color='2496ED' />
-            <TechLogo name='Python' slug='python' color='3776AB' />
+            <TechLogo icon={siTypescript} />
+            <TechLogo icon={siNestjs} />
+            {/* The Next.js brand color is black: follow the theme instead. */}
+            <TechLogo icon={siNextdotjs} monochrome />
+            <TechLogo icon={siDocker} />
+            <TechLogo icon={siPython} />
           </div>
         </div>
       </div>
@@ -92,34 +93,25 @@ export function Hero() {
   );
 }
 
-// Javított Segédkomponens (Image + Opacity kezelés)
-function TechLogo({
-  name,
-  slug,
-  color,
-  className,
-}: {
-  name: string;
-  slug: string;
-  color?: string;
-  className?: string;
-}) {
-  const iconUrl = `https://cdn.simpleicons.org/${slug}/${color || ''}`;
-
+// Brand logo from simple-icons, rendered inline: no network request, no image optimizer.
+function TechLogo({ icon, monochrome = false }: { icon: SimpleIcon; monochrome?: boolean }) {
   return (
     <div className='flex flex-col items-center gap-3 group cursor-default transition-transform hover:-translate-y-1 duration-300'>
-      <div className='h-12 w-12 flex items-center justify-center relative'>
-        <Image
-          src={iconUrl}
-          alt={name}
+      <div className='h-12 w-12 flex items-center justify-center'>
+        {/* Decorative: the visible name below labels it. */}
+        <svg
+          aria-hidden='true'
+          viewBox='0 0 24 24'
           width={40}
           height={40}
-          className={`opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300 ${className}`}
-          unoptimized
-        />
+          className='text-foreground opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300'
+        >
+          <path d={icon.path} fill={monochrome ? 'currentColor' : `#${icon.hex}`} />
+        </svg>
       </div>
-      <span className='text-xs font-mono font-medium text-muted-foreground group-hover:text-foreground transition-colors opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 duration-300'>
-        {name}
+      {/* Always visible: touch screens have no hover. */}
+      <span className='text-xs font-mono font-medium text-muted-foreground group-hover:text-foreground transition-colors duration-300'>
+        {icon.title}
       </span>
     </div>
   );
