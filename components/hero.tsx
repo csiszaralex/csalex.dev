@@ -18,7 +18,7 @@ export function Hero() {
 
       <div className='container max-w-5xl px-4 md:px-6 relative z-10 text-center flex flex-col items-center gap-8'>
         {/* --- STATUS BADGE --- */}
-        <div className='fade-in-up'>
+        <div className='animate-in fade-in slide-in-from-bottom-4 duration-700 motion-reduce:animate-none'>
           <Badge
             variant='outline'
             className='px-4 py-1.5 text-sm font-mono tracking-wide border-primary/30 bg-primary/5 text-primary-foreground dark:text-primary rounded-full backdrop-blur-md shadow-[0_0_15px_-3px_var(--primary)]'
@@ -36,7 +36,7 @@ export function Hero() {
           <h1 className='text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter'>
             Building systems that
             <br />
-            <span className='text-transparent bg-clip-text bg-linear-to-r from-primary via-orange-500 to-primary dark:from-blue-400 dark:via-primary dark:to-blue-600 animate-gradient-x bg-size-[200%_auto]'>
+            <span className='text-transparent bg-clip-text bg-linear-to-r from-primary via-orange-500 to-primary dark:from-blue-400 dark:via-primary dark:to-blue-600 animate-gradient-x motion-reduce:animate-none bg-size-[200%_auto]'>
               survive reality.
             </span>
           </h1>
