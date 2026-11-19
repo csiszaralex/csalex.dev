@@ -25,6 +25,7 @@ export function Projects() {
       icon: Server,
       colorClass: 'text-cyan-500',
       bgClass: 'bg-cyan-500/10',
+      stripeClass: 'bg-cyan-500/80',
       borderClass: 'hover:border-cyan-500/50',
       glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(6,182,212,0.3)]',
     },
@@ -40,6 +41,7 @@ export function Projects() {
       // Szín: Lila/Pink (AI & Innovation)
       colorClass: 'text-purple-500',
       bgClass: 'bg-purple-500/10',
+      stripeClass: 'bg-purple-500/80',
       borderClass: 'hover:border-purple-500/50',
       glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(168,85,247,0.3)]',
     },
@@ -55,6 +57,7 @@ export function Projects() {
       // Szín: Narancs/Amber (Data & Business Value)
       colorClass: 'text-orange-500',
       bgClass: 'bg-orange-500/10',
+      stripeClass: 'bg-orange-500/80',
       borderClass: 'hover:border-orange-500/50',
       glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)]',
     },
@@ -88,9 +91,9 @@ export function Projects() {
       </div>
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <Card
-            key={index}
+            key={project.title}
             className={cn(
               'flex flex-col h-full bg-background/60 backdrop-blur-xl border-border/60 transition-all duration-300 group overflow-hidden',
               project.borderClass,
@@ -98,12 +101,10 @@ export function Projects() {
             )}
           >
             <CardHeader className='relative'>
-              {/* Halvány háttér csík a header mögött az adott színben */}
+              {/* Halvány háttér csík a header mögött az adott színben.
+                  Full class name in the data: Tailwind only generates classes it finds literally. */}
               <div
-                className={cn(
-                  'absolute top-0 left-0 w-full h-1 opacity-50',
-                  project.bgClass.replace('/10', '/80'),
-                )}
+                className={cn('absolute top-0 left-0 w-full h-1 opacity-50', project.stripeClass)}
               />
 
               <div className='flex justify-between items-start mb-4'>
