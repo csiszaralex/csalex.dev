@@ -8,8 +8,8 @@ export default function OfflinePage() {
       <WifiOff className='w-24 h-24 mb-6 text-muted-foreground mx-auto' />
       <h1 className='text-4xl font-bold mb-4'>You are offline</h1>
       <p className='text-lg text-muted-foreground mb-8 max-w-md mx-auto'>
-        It seems there&apos;s a problem with your connection. Don&apos;t worry, you can still browse cached
-        pages, and any messages sent will be delivered when you&apos;re back online.
+        This page hasn&apos;t been saved for offline use yet. Pages you have already visited still
+        work offline. To send a message, please reconnect first.
       </p>
       <button
         onClick={() => window.location.reload()}
