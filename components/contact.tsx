@@ -13,6 +13,8 @@ export function Contact() {
   const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
 
   const [state, handleSubmit] = useForm(formId);
+  // Network failures (e.g. offline) arrive as form-level errors, not field errors.
+  const formError = (state.errors?.getFormErrors().length ?? 0) > 0;
 
   return (
     <section
@@ -118,6 +120,13 @@ export function Contact() {
                       className='text-red-500 text-xs'
                     />
                   </div>
+
+                  {formError && (
+                    <p role='alert' className='text-red-500 text-sm'>
+                      Your message could not be sent. Please check your connection and try again,
+                      or write to <strong>{contactEmail}</strong>.
+                    </p>
+                  )}
 
                   <div className='flex justify-end'>
                     <Button
