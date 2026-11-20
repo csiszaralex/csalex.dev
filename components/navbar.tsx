@@ -2,7 +2,7 @@
 
 import appIcon from '@/app/icon.png';
 import { ModeToggle } from '@/components/mode-toggle';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Github, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,17 +34,21 @@ export function Navbar() {
           </nav>
 
           <div className='flex items-center gap-2 pr-4 border-r border-border/50'>
-            <Link href='https://github.com/csiszaralex' target='_blank'>
-              <Button variant='ghost' size='icon'>
-                <Github className='h-5 w-5' />
-                <span className='sr-only'>GitHub</span>
-              </Button>
+            <Link
+              href='https://github.com/csiszaralex'
+              target='_blank'
+              className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+            >
+              <Github className='h-5 w-5' />
+              <span className='sr-only'>GitHub</span>
             </Link>
-            <Link href='https://linkedin.com/in/csalex1' target='_blank'>
-              <Button variant='ghost' size='icon'>
-                <Linkedin className='h-5 w-5' />
-                <span className='sr-only'>LinkedIn</span>
-              </Button>
+            <Link
+              href='https://linkedin.com/in/csalex1'
+              target='_blank'
+              className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+            >
+              <Linkedin className='h-5 w-5' />
+              <span className='sr-only'>LinkedIn</span>
             </Link>
           </div>
 

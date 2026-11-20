@@ -1,5 +1,6 @@
-"use client"
-
+// No "use client" here on purpose: @base-ui/react/button is already a client
+// component, and without the directive Server Components can call buttonVariants
+// to style a <Link> as a button. `shadcn add button --overwrite` would re-add it.
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 

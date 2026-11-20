@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import { Code, Download, Globe, Layers, Server } from 'lucide-react';
 import Link from 'next/link';
 
@@ -44,11 +45,17 @@ export function About() {
           </div>
 
           <div className='pt-2'>
-            <Link href='/CV.pdf' target='_blank' rel='noopener noreferrer'>
-              <Button className='gap-2 rounded-full px-6 shadow-lg shadow-primary/10 hover:shadow-primary/20 h-12'>
-                <Download className='w-4 h-4' />
-                Download CV
-              </Button>
+            <Link
+              href='/CV.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={cn(
+                buttonVariants(),
+                'gap-2 rounded-full px-6 shadow-lg shadow-primary/10 hover:shadow-primary/20 h-12',
+              )}
+            >
+              <Download className='w-4 h-4' />
+              Download CV
             </Link>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -79,14 +79,16 @@ export function Projects() {
             <span className='text-foreground font-medium'> usability</span>.
           </p>
         </div>
-        <Link href='https://github.com/csiszaralex' target='_blank'>
-          <Button
-            variant='outline'
-            className='gap-2 group border-primary/20 hover:bg-primary/5 hover:text-primary transition-colors'
-          >
-            View GitHub Profile
-            <ExternalLink className='w-4 h-4 group-hover:translate-x-1 transition-transform' />
-          </Button>
+        <Link
+          href='https://github.com/csiszaralex'
+          target='_blank'
+          className={cn(
+            buttonVariants({ variant: 'outline' }),
+            'gap-2 group border-primary/20 hover:bg-primary/5 hover:text-primary transition-colors',
+          )}
+        >
+          View GitHub Profile
+          <ExternalLink className='w-4 h-4 group-hover:translate-x-1 transition-transform' />
         </Link>
       </div>
 
@@ -157,14 +159,16 @@ export function Projects() {
 
             <CardFooter className='pt-2 mt-auto'>
               {project.link ? (
-                <Link href={project.link} target='_blank' className='w-full'>
-                  <Button
-                    variant='ghost'
-                    className='w-full gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all'
-                  >
-                    <Github className='w-4 h-4' />
-                    Source Code
-                  </Button>
+                <Link
+                  href={project.link}
+                  target='_blank'
+                  className={cn(
+                    buttonVariants({ variant: 'ghost' }),
+                    'w-full gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
+                  )}
+                >
+                  <Github className='w-4 h-4' />
+                  Source Code
                 </Link>
               ) : (
                 <Button

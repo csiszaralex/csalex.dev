@@ -1,7 +1,8 @@
 'use client';
 
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { siDocker, siNestjs, siNextdotjs, siPython, siTypescript, type SimpleIcon } from 'simple-icons';
@@ -52,24 +53,25 @@ export function Hero() {
 
         {/* --- GOMBOK --- */}
         <div className='flex flex-col sm:flex-row items-center justify-center gap-4 w-full'>
-          <Link href='#projects'>
-            <Button
-              size='lg'
-              className='h-12 px-8 text-base rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300'
-            >
-              View Projects
-              <ArrowRight className='ml-2 h-4 w-4' />
-            </Button>
+          <Link
+            href='#projects'
+            className={cn(
+              buttonVariants({ size: 'lg' }),
+              'h-12 px-8 text-base rounded-full shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300',
+            )}
+          >
+            View Projects
+            <ArrowRight className='ml-2 h-4 w-4' />
           </Link>
 
-          <Link href={`mailto:${contactEmail}`}>
-            <Button
-              variant='outline'
-              size='lg'
-              className='h-12 px-8 text-base font-mono rounded-full border-primary/20 hover:bg-primary/5 hover:text-primary transition-colors'
-            >
-              {contactEmail}
-            </Button>
+          <Link
+            href={`mailto:${contactEmail}`}
+            className={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'h-12 px-8 text-base font-mono rounded-full border-primary/20 hover:bg-primary/5 hover:text-primary transition-colors',
+            )}
+          >
+            {contactEmail}
           </Link>
         </div>
 
