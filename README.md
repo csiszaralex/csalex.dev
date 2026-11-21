@@ -60,6 +60,10 @@ To run this project locally, you'll need Node.js 20.9+ (required by Next.js 16) 
 
 5.  Open [http://localhost:3000](http://localhost:3000) with your browser. The service worker is only active in a production build (`pnpm build && pnpm start`).
 
+## 📄 CV
+
+The CV's LaTeX source is `cv/cv.tex`. After changing it, run `pnpm cv` (needs a LaTeX distribution with `latexmk`, plus `pdfinfo` and `pdftotext`) and commit `public/CV.pdf` together with the source.
+
 ## 📂 Project Structure
 
 ```bash
