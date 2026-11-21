@@ -1,5 +1,6 @@
 import withSerwistInit from '@serwist/next';
 import type { NextConfig } from 'next';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 
 const withSerwist = withSerwistInit({
   swSrc: 'app/sw.ts',
@@ -44,5 +45,13 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withSerwist(nextConfig);
+export default function config(phase: string): NextConfig {
+  // The build inlines NEXT_PUBLIC_* values into the bundle. Without a form ID the
+  // contact form (components/contact.tsx) would ship broken and fail silently.
+  // Only the build needs it: `next start` serves the already inlined value.
+  if (phase === PHASE_PRODUCTION_BUILD && !process.env.NEXT_PUBLIC_FORMSPREE_ID) {
+    throw new Error('NEXT_PUBLIC_FORMSPREE_ID is not set: the contact form would not work.');
+  }
+  return withSerwist(nextConfig);
+}
 
