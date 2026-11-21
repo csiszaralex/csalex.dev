@@ -46,8 +46,8 @@ export function Contact() {
                 </div>
                 <h3 className='text-2xl font-bold'>Message Sent!</h3>
                 <p className='text-muted-foreground max-w-md'>
-                  Thanks for reaching out. I&apos;ve received your message and will get back to you
-                  at <strong>{contactEmail}</strong> as soon as possible.
+                  Thanks for reaching out. I&apos;ve received your message and will reply to the
+                  email address you gave as soon as possible.
                 </p>
                 <Button variant='outline' onClick={() => window.location.reload()} className='mt-6'>
                   Send another message
