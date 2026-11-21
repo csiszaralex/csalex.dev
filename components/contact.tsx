@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { contactEmail } from '@/lib/site';
+import { contactEmail, githubUrl, linkedinUrl } from '@/lib/site';
 import { useForm, ValidationError } from '@formspree/react';
 import { CheckCircle2, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react';
 import Link from 'next/link';
@@ -174,7 +174,7 @@ export function Contact() {
               </Link>
 
               <Link
-                href='https://linkedin.com/in/csalex1'
+                href={linkedinUrl}
                 target='_blank'
                 className='flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors p-3 rounded-lg hover:bg-primary/5 -mx-3'
               >
@@ -185,7 +185,7 @@ export function Contact() {
               </Link>
 
               <Link
-                href='https://github.com/csiszaralex'
+                href={githubUrl}
                 target='_blank'
                 className='flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors p-3 rounded-lg hover:bg-primary/5 -mx-3'
               >

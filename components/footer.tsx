@@ -1,4 +1,4 @@
-import { contactEmail } from '@/lib/site';
+import { contactEmail, githubUrl, linkedinUrl } from '@/lib/site';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 
@@ -15,7 +15,7 @@ export function Footer() {
 
         <div className='flex items-center gap-6'>
           <Link
-            href='https://github.com/csiszaralex'
+            href={githubUrl}
             target='_blank'
             className='text-muted-foreground hover:text-primary transition-colors'
           >
@@ -23,7 +23,7 @@ export function Footer() {
             <span className='sr-only'>GitHub</span>
           </Link>
           <Link
-            href='https://linkedin.com/in/csalex1'
+            href={linkedinUrl}
             target='_blank'
             className='text-muted-foreground hover:text-primary transition-colors'
           >

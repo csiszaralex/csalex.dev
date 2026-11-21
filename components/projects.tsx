@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Button, buttonVariants } from '@/components/ui/button';
+import { githubUrl } from '@/lib/site';
 import {
   Card,
   CardContent,
@@ -80,7 +81,7 @@ export function Projects() {
           </p>
         </div>
         <Link
-          href='https://github.com/csiszaralex'
+          href={githubUrl}
           target='_blank'
           className={cn(
             buttonVariants({ variant: 'outline' }),
