@@ -1,5 +1,7 @@
 # csalex.dev | The Digital Garden
 
+[![CI](https://github.com/csiszaralex/csalex.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/csiszaralex/csalex.dev/actions/workflows/ci.yml)
+
 > **"Building systems that survive reality."**
 
 This repository contains the source code for my personal professional portfolio. It serves as a central hub for my engineering projects, architectural philosophy, and contact channels.
