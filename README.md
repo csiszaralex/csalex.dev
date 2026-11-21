@@ -50,7 +50,6 @@ To run this project locally, you'll need Node.js 18+ and pnpm.
 
     ```bash
     NEXT_PUBLIC_FORMSPREE_ID=your_form_id
-    NEXT_PUBLIC_CONTACT_EMAIL=hello@csalex.dev
     ```
 
 4.  **Run the development server:**

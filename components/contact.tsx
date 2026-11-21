@@ -4,13 +4,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { contactEmail } from '@/lib/site';
 import { useForm, ValidationError } from '@formspree/react';
 import { CheckCircle2, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react';
 import Link from 'next/link';
 
 export function Contact() {
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID || '';
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
 
   const [state, handleSubmit] = useForm(formId);
   // Network failures (e.g. offline) arrive as form-level errors, not field errors.

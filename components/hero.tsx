@@ -2,14 +2,13 @@
 
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button';
+import { contactEmail } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { siDocker, siNestjs, siNextdotjs, siPython, siTypescript, type SimpleIcon } from 'simple-icons';
 
 export function Hero() {
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
-
   return (
     <section className='relative flex flex-col items-center justify-center overflow-hidden min-h-[calc(100vh-4rem)]'>
       {/* --- HÁTTÉR --- */}
