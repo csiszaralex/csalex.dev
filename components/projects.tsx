@@ -10,60 +10,138 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { BarChart3, Bot, ExternalLink, Github, Lock, Server } from 'lucide-react';
+import {
+  BarChart3,
+  Bot,
+  ExternalLink,
+  Github,
+  LayoutDashboard,
+  Lock,
+  MonitorCog,
+  Server,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react';
 import Link from 'next/link';
 
-export function Projects() {
-  const projects = [
-    {
-      title: 'Voter System',
-      category: 'High-Performance Architecture',
-      description:
-        'Real-time polling architecture handling high concurrency. Implements Clean Architecture with a robust NestJS backend and WebSockets.',
-      tech: ['NestJS', 'TypeScript', 'WebSockets', 'CI/CD'],
-      link: 'https://github.com/csiszaralex/voter',
-      status: 'Latest Build',
-      icon: Server,
-      colorClass: 'text-cyan-500',
-      bgClass: 'bg-cyan-500/10',
-      stripeClass: 'bg-cyan-500/80',
-      borderClass: 'hover:border-cyan-500/50',
-      glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(6,182,212,0.3)]',
-    },
-    {
-      title: 'AI Agent Orchestrator',
-      category: 'R&D / Autonomous Systems',
-      description:
-        'Service orchestrator that dynamically registers MCP servers as callable tools. Features a dual-loop verification system for LLM accuracy.',
-      tech: ['Python', 'MCP Protocol', 'Claude AI'],
-      link: null,
-      status: 'Research',
-      icon: Bot,
-      // Szín: Lila/Pink (AI & Innovation)
-      colorClass: 'text-purple-500',
-      bgClass: 'bg-purple-500/10',
-      stripeClass: 'bg-purple-500/80',
-      borderClass: 'hover:border-purple-500/50',
-      glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(168,85,247,0.3)]',
-    },
-    {
-      title: 'Quanopt Analytics',
-      category: 'Enterprise Data Pipeline',
-      description:
-        'Scalable backend engine processing exhibition data via Google BigQuery. Automated statistical generation and data population for chatbots.',
-      tech: ['BigQuery', 'NestJS', 'GCP', 'Microservices'],
-      link: null,
-      status: 'Production',
-      icon: BarChart3,
-      // Szín: Narancs/Amber (Data & Business Value)
-      colorClass: 'text-orange-500',
-      bgClass: 'bg-orange-500/10',
-      stripeClass: 'bg-orange-500/80',
-      borderClass: 'hover:border-orange-500/50',
-      glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)]',
-    },
-  ];
+type Project = {
+  title: string;
+  category: string;
+  description: string;
+  tech: string[];
+  // Source code; null for private repositories.
+  link: string | null;
+  // An extra public link, e.g. a store listing.
+  secondaryLink: { label: string; href: string } | null;
+  status: string;
+  icon: LucideIcon;
+  colorClass: string;
+  bgClass: string;
+  stripeClass: string;
+  borderClass: string;
+  glowClass: string;
+};
 
+const projects: Project[] = [
+  {
+    title: 'Bohém Birtok Operations',
+    category: 'Business Automation',
+    description:
+      'The back office of a rural event venue, automated: AI pre-filters incoming email and drafts replies for human approval, inquiries and bookings land in the CRM, deposit invoices are issued and matched to payments, and a daily report tracks the ads. 50+ n8n workflows on self-hosted infrastructure.',
+    tech: ['n8n', 'Twenty CRM', 'Claude API', 'Docker'],
+    link: null,
+    secondaryLink: null,
+    status: 'Daily use',
+    icon: Workflow,
+    colorClass: 'text-emerald-500',
+    bgClass: 'bg-emerald-500/10',
+    stripeClass: 'bg-emerald-500/80',
+    borderClass: 'hover:border-emerald-500/50',
+    glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(16,185,129,0.3)]',
+  },
+  {
+    title: 'Hub',
+    category: 'Browser Extension',
+    description:
+      'A minimalist new-tab dashboard for Chrome: weather, calendar, focus timer, notes and a daily photograph. Local-first, with a serverless backend of its own for images and quotes.',
+    tech: ['React', 'Vite', 'Cloudflare Workers', 'Hono'],
+    link: 'https://github.com/csiszaralex/hub-dashboard-extension',
+    secondaryLink: { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/hub/lkkjcbdikipienbdecgeajcecopdlbdm' },
+    status: 'Chrome Web Store',
+    icon: LayoutDashboard,
+    colorClass: 'text-cyan-500',
+    bgClass: 'bg-cyan-500/10',
+    stripeClass: 'bg-cyan-500/80',
+    borderClass: 'hover:border-cyan-500/50',
+    glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(6,182,212,0.3)]',
+  },
+  {
+    title: 'ClaudeSwitcher',
+    category: 'Developer Tool',
+    description:
+      'A Windows tray app that lists every running Claude Code session, lets you answer their permission prompts from one place, and jumps to the right VS Code tab.',
+    tech: ['Electron', 'TypeScript', 'Vitest', 'NSIS'],
+    link: 'https://github.com/csiszaralex/ClaudeSwitcher',
+    secondaryLink: null,
+    status: 'Active',
+    icon: MonitorCog,
+    colorClass: 'text-rose-500',
+    bgClass: 'bg-rose-500/10',
+    stripeClass: 'bg-rose-500/80',
+    borderClass: 'hover:border-rose-500/50',
+    glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(244,63,94,0.3)]',
+  },
+  {
+    title: 'Self-hosted Infrastructure',
+    category: 'DevOps',
+    description:
+      'A Debian VPS running over a dozen containerised services behind Traefik, redeployed from git every five minutes. Secrets encrypted with sops, nightly restic backups to Cloudflare R2, admin tools reachable only over WireGuard.',
+    tech: ['Docker', 'Traefik', 'WireGuard', 'sops', 'restic'],
+    link: null,
+    secondaryLink: null,
+    status: 'Production',
+    icon: Server,
+    colorClass: 'text-blue-500',
+    bgClass: 'bg-blue-500/10',
+    stripeClass: 'bg-blue-500/80',
+    borderClass: 'hover:border-blue-500/50',
+    glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)]',
+  },
+  {
+    title: 'Data Space AI Orchestrator',
+    category: 'M.S. Thesis',
+    description:
+      "A Claude-based mediator agent that turns a user's need into a chain of data-space services, querying the Prometheus-X catalog through an MCP server. A separate validator checks offerings in a structural and a SHACL layer.",
+    tech: ['Python', 'FastAPI', 'MCP', 'Claude API'],
+    link: null,
+    secondaryLink: null,
+    status: 'Research',
+    icon: Bot,
+    colorClass: 'text-purple-500',
+    bgClass: 'bg-purple-500/10',
+    stripeClass: 'bg-purple-500/80',
+    borderClass: 'hover:border-purple-500/50',
+    glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(168,85,247,0.3)]',
+  },
+  {
+    title: 'Quanopt Analytics',
+    category: 'Enterprise Data Pipeline',
+    description:
+      'Scalable backend engine processing exhibition data via Google BigQuery. Automated statistical generation and data population for chatbots.',
+    tech: ['BigQuery', 'NestJS', 'GCP', 'Microservices'],
+    link: null,
+    secondaryLink: null,
+    status: 'Production',
+    icon: BarChart3,
+    colorClass: 'text-orange-500',
+    bgClass: 'bg-orange-500/10',
+    stripeClass: 'bg-orange-500/80',
+    borderClass: 'hover:border-orange-500/50',
+    glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)]',
+  },
+];
+
+export function Projects() {
   return (
     <section className='container max-w-6xl mx-auto px-4 py-6 relative' id='projects'>
       {/* Háttér dekoráció (finom gradiens folt a szekció alatt) */}
@@ -158,14 +236,27 @@ export function Projects() {
               </div>
             </CardContent>
 
-            <CardFooter className='pt-2 mt-auto'>
+            <CardFooter className='pt-2 mt-auto gap-2'>
+              {project.secondaryLink && (
+                <Link
+                  href={project.secondaryLink.href}
+                  target='_blank'
+                  className={cn(
+                    buttonVariants({ variant: 'ghost' }),
+                    'flex-1 gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
+                  )}
+                >
+                  <ExternalLink className='w-4 h-4' />
+                  {project.secondaryLink.label}
+                </Link>
+              )}
               {project.link ? (
                 <Link
                   href={project.link}
                   target='_blank'
                   className={cn(
                     buttonVariants({ variant: 'ghost' }),
-                    'w-full gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
+                    'flex-1 gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
                   )}
                 >
                   <Github className='w-4 h-4' />

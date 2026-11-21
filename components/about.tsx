@@ -77,7 +77,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {['TypeScript', 'NestJS', 'Modular Monolith', 'Python', 'FastAPI'].map((s) => (
+                {['TypeScript', 'NestJS', 'React', 'Modular Monolith', 'Python', 'FastAPI'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'
@@ -98,7 +98,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {['Google BigQuery', 'MCP Protocol', 'PostgreSQL', 'Redis'].map((s) => (
+                {['Google BigQuery', 'MCP Protocol', 'n8n', 'PostgreSQL', 'Redis'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'
@@ -119,7 +119,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {['Docker', 'Linux', 'Nginx', 'CI/CD', 'Self-hosting', 'Git'].map((s) => (
+                {['Docker', 'Linux', 'Nginx', 'Cloudflare Workers', 'CI/CD', 'Self-hosting', 'Git'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'
