@@ -1,5 +1,3 @@
-'use client';
-
 import appIcon from '@/app/icon.png';
 import { ModeToggle } from '@/components/mode-toggle';
 import { buttonVariants } from '@/components/ui/button';
