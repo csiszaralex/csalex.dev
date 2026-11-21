@@ -1,10 +1,11 @@
+import { siteDescription, siteName } from '@/lib/site';
 import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Alex Csiszar Portfolio',
+    name: `${siteName} Portfolio`,
     short_name: 'AlexPortfolio',
-    description: 'Portfolio of a Pragmatic Architect & FullStack Engineer',
+    description: siteDescription,
     start_url: '/',
     display: 'standalone',
     background_color: '#0a0a0a',

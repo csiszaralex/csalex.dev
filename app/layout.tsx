@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@/components/theme-provider';
+import { siteDescription, siteName, siteUrl } from '@/lib/site';
 import type { Metadata, Viewport } from 'next';
 import { Fira_Code, Inter } from 'next/font/google';
 import './globals.css';
@@ -21,12 +22,28 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Alex Csiszar',
-  description: 'Portfolio of a Pragmatic Architect & FullStack Engineer.',
+  // Resolves relative URLs (canonical, Open Graph image) to absolute ones.
+  metadataBase: new URL(siteUrl),
+  title: siteName,
+  description: siteDescription,
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName,
+    title: siteName,
+    description: siteDescription,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteName,
+    description: siteDescription,
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Alex Csiszar',
+    title: siteName,
   },
 };
 
