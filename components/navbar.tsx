@@ -6,6 +6,13 @@ import { Github, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// Each id must match a section's id attribute (components/projects.tsx, about.tsx, contact.tsx).
+const sections = [
+  { id: 'projects', label: 'Projects' },
+  { id: 'about', label: 'About' },
+  { id: 'contact', label: 'Contact' },
+];
+
 export function Navbar() {
   return (
     <header className='sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60'>
@@ -28,8 +35,16 @@ export function Navbar() {
 
         {/* Jobb oldal: Ikonok + Theme Toggle */}
         <div className='flex items-center gap-2'>
-          <nav className='hidden md:flex items-center gap-1 mr-4'>
-            {/* Ide jöhetnének belső linkek később: Projects, About */}
+          <nav aria-label='Sections' className='hidden md:flex items-center gap-1 mr-4'>
+            {sections.map((section) => (
+              <Link
+                key={section.id}
+                href={`#${section.id}`}
+                className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+              >
+                {section.label}
+              </Link>
+            ))}
           </nav>
 
           <div className='flex items-center gap-2 pr-4 border-r border-border/50'>

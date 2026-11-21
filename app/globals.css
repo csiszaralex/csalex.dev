@@ -130,6 +130,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  /* In-page links (#projects…) land below the sticky h-16 navbar, not under it. */
+  html {
+    scroll-padding-top: 4rem;
+  }
   body {
     @apply bg-background text-foreground;
   }
