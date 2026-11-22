@@ -6,7 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { contactEmail, githubUrl, linkedinUrl } from '@/lib/site';
 import { useForm, ValidationError } from '@formspree/react';
-import { CheckCircle2, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from '@/components/brand-icons';
+import { CheckCircle2, Loader2, Mail, Send } from 'lucide-react';
 import Link from 'next/link';
 
 export function Contact() {
@@ -182,7 +183,7 @@ export function Contact() {
                 className='flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors p-3 rounded-lg hover:bg-primary/5 -mx-3'
               >
                 <div className='bg-background p-2 rounded-full border border-border shrink-0'>
-                  <Linkedin className='w-5 h-5 text-blue-600' />
+                  <LinkedinIcon className='w-5 h-5 text-blue-600' />
                 </div>
                 <span className='font-medium text-sm'>LinkedIn Profile</span>
               </Link>
@@ -193,7 +194,7 @@ export function Contact() {
                 className='flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors p-3 rounded-lg hover:bg-primary/5 -mx-3'
               >
                 <div className='bg-background p-2 rounded-full border border-border shrink-0'>
-                  <Github className='w-5 h-5' />
+                  <GithubIcon className='w-5 h-5' />
                 </div>
                 <span className='font-medium text-sm'>GitHub Profile</span>
               </Link>
