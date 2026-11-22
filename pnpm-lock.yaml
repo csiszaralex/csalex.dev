@@ -51,12 +51,6 @@ importers:
       '@serwist/next':
         specifier: ^9.5.6
         version: 9.5.6(next@16.4.6(@babel/core@7.29.13)(@types/node@20.19.30)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
-      '@serwist/precaching':
-        specifier: ^9.5.6
-        version: 9.5.6(browserslist@4.29.6)(typescript@5.9.3)
-      '@serwist/sw':
-        specifier: ^9.5.6
-        version: 9.5.6(browserslist@4.29.6)(typescript@5.9.3)
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.18
@@ -706,22 +700,6 @@ packages:
     peerDependenciesMeta:
       '@serwist/cli':
         optional: true
-      typescript:
-        optional: true
-
-  '@serwist/precaching@9.5.6':
-    resolution: {integrity: sha512-8L0mNq7GNxYGy4vLPC6D0fNQMRoKomECzc6++fMhZnyonoB/4skSjf6X0TqrBLIEw71GXaj2UQtluUFOTsCroQ==}
-    peerDependencies:
-      typescript: '>=5.0.0'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@serwist/sw@9.5.6':
-    resolution: {integrity: sha512-QWPdYl3TiRH5KnMj7GIoubcoU2Es5N95hFnCTcyX/N1NjWiZjcHJw298pFGS+4cXD5A9HjsfrFh19gFS2zZdPA==}
-    peerDependencies:
-      typescript: '>=5.0.0'
-    peerDependenciesMeta:
       typescript:
         optional: true
 
@@ -4027,22 +4005,6 @@ snapshots:
       typescript: 5.9.3
     transitivePeerDependencies:
       - webpack
-
-  '@serwist/precaching@9.5.6(browserslist@4.29.6)(typescript@5.9.3)':
-    dependencies:
-      serwist: 9.5.6(browserslist@4.29.6)(typescript@5.9.3)
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - browserslist
-
-  '@serwist/sw@9.5.6(browserslist@4.29.6)(typescript@5.9.3)':
-    dependencies:
-      serwist: 9.5.6(browserslist@4.29.6)(typescript@5.9.3)
-    optionalDependencies:
-      typescript: 5.9.3
-    transitivePeerDependencies:
-      - browserslist
 
   '@serwist/utils@9.5.6(browserslist@4.29.6)':
     optionalDependencies:
