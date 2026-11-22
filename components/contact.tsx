@@ -40,7 +40,7 @@ export function Contact() {
           <CardContent className='p-8 md:p-10'>
             {/* SIKERES KÜLDÉS UTÁNI ÁLLAPOT */}
             {state.succeeded ? (
-              <div className='flex flex-col items-center justify-center text-center space-y-4 py-12 animate-in fade-in zoom-in duration-500'>
+              <div className='flex flex-col items-center justify-center text-center space-y-4 py-12 animate-in fade-in zoom-in duration-500 motion-reduce:animate-none'>
                 <div className='bg-green-500/10 p-4 rounded-full text-green-500 mb-2'>
                   <CheckCircle2 className='w-12 h-12' />
                 </div>
@@ -59,7 +59,7 @@ export function Contact() {
                 <div>
                   <h3 className='font-bold text-2xl mb-2 flex items-center gap-2'>
                     Send a Message
-                    <span className='flex h-2 w-2 rounded-full bg-primary animate-pulse'></span>
+                    <span className='flex h-2 w-2 rounded-full bg-primary animate-pulse motion-reduce:animate-none'></span>
                   </h3>
                   <p className='text-muted-foreground'>
                     Got a complex project or an engineering challenge?

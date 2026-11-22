@@ -22,7 +22,7 @@ export function Hero() {
             className='px-4 py-1.5 text-sm font-mono tracking-wide border-primary/30 bg-primary/5 text-foreground dark:text-primary rounded-full backdrop-blur-md shadow-[0_0_15px_-3px_var(--primary)]'
           >
             <span className='relative flex h-2 w-2 mr-2'>
-              <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75'></span>
+              <span className='animate-ping motion-reduce:animate-none absolute inline-flex h-full w-full rounded-full bg-primary opacity-75'></span>
               <span className='relative inline-flex rounded-full h-2 w-2 bg-primary'></span>
             </span>
             Open to engineering roles from 2027

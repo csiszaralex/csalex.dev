@@ -151,7 +151,7 @@ export function Projects() {
         <div className='space-y-2'>
           <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
             Selected Work
-            <span className='text-primary animate-pulse'>.</span>
+            <span className='text-primary animate-pulse motion-reduce:animate-none'>.</span>
           </h2>
           <p className='text-muted-foreground max-w-xl text-lg'>
             Engineering solutions that balance complexity with
