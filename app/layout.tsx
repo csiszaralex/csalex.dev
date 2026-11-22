@@ -22,23 +22,26 @@ export const viewport: Viewport = {
   ],
 };
 
+// The role in the title is what search results and shared links show next to the name.
+const title = `${siteName} · Software Engineer`;
+
 export const metadata: Metadata = {
   // Resolves relative URLs (canonical, Open Graph image) to absolute ones.
   metadataBase: new URL(siteUrl),
-  title: siteName,
+  title,
   description: siteDescription,
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     url: '/',
     siteName,
-    title: siteName,
+    title,
     description: siteDescription,
     locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteName,
+    title,
     description: siteDescription,
   },
   appleWebApp: {
