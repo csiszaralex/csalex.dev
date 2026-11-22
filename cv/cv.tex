@@ -1,0 +1,157 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ---- Formázott, ATS-barát CV Sablon ----
+% ---- A v15 utódja; build: `pnpm cv` (public/CV.pdf) ----
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt, a4paper]{article}
+\usepackage[a4paper, margin=0.55in, vmargin=0.4in]{geometry} % Szűk margó
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}                         % Kattintható linkek
+\usepackage{titlesec}                         % Szekció címek testreszabása
+\usepackage{enumitem}                         % Felsorolások testreszabása
+\usepackage[T1]{fontenc}
+\usepackage{fontawesome5}                     % Ikonok
+\usepackage{textcomp}                         % textperiodcentered
+
+% Géppel olvashatóság (ATS): minden karakter Unicode-ként nyerhető ki a PDF-ből,
+% és nincs szóelválasztás, mert egy elválasztott szó nem egyezik a kulcsszóval.
+\input{glyphtounicode}
+\pdfgentounicode=1
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% ----- ÚJ CSOMAGOK A STÍLUSHOZ -----
+\usepackage{helvet}                           % Modern, talp nélküli (Helvetica) betűtípus
+\renewcommand{\familydefault}{\sfdefault}     % Legyen a Helvetica az alapértelmezett
+\usepackage[dvipsnames]{xcolor}               % Színek használatához
+\usepackage{setspace}                         % Sorköz csökkentéséhez
+\setstretch{1.0}                              % Normál sorköz: a tartalom kényelmesen kitölti az oldalt
+
+% ----- Egyéni szín definiálása -----
+\definecolor{AccentColor}{rgb}{0.2, 0.4, 0.6} % Egy professzionális sötétkék
+
+% Nincs oldalszámozás
+\pagestyle{empty}
+
+% Nincs bekezdés-behúzás
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt} % <<<--- Biztonsági beállítás (nulla bekezdés-térköz)
+
+% Linkek színe (FEKETE)
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black
+}
+
+% Szekció címek formázása: \Large, NEM NAGYBETŰS, MINIMÁLIS TÉRKÖZ
+\titlespacing{\section}{0pt}{2.4ex}{0.8ex}
+\titleformat{\section}
+    {\Large\bfseries\color{AccentColor}}
+    {}                               % Címke
+    {0em}                            % Elválasztás
+    {}                               % Kód előtte
+    [\vspace{0.5ex}\color{AccentColor}\hrule height 1.5pt\vspace{0.5ex}]
+
+% Egyéni parancs a felsorolások tömörítésére
+\setlist[itemize]{leftmargin=*, itemsep=0.15ex, topsep=0.6ex, partopsep=0ex, parsep=0ex}
+
+% ----- Bejegyzés: cím és jobbra igazított dátum, alatta a hely -----
+% A PDF tartalmi sorrendjében a dátum közvetlenül a cím után áll (pdftotext -raw).
+% #1: cím, #2: hely, #3: dátum
+\newcommand{\cventry}[3]{
+    {\large\bfseries\color{AccentColor}#1}
+    \hfill
+    {\large\bfseries\color{AccentColor}#3} \\
+    \textit{#2}
+    \vspace{2pt}
+}
+
+% ----- A DOKUMENTUM KEZDETE -----
+\begin{document}
+
+% ----- FEJLÉC (NÉV ÉS ELÉRHETŐSÉG) -----
+\begin{center}
+    {\Huge\bfseries ALEX CSISZÁR}
+    \vspace{1ex} % MINIMÁLIS TÉRKÖZ
+
+    \faMapMarker\ Budapest, Hungary \textperiodcentered\
+    \href{mailto:hello@csalex.dev}{\faEnvelope\ hello@csalex.dev} \textperiodcentered\
+    \href{https://csalex.dev}{\faGlobe\ csalex.dev} \\
+    \vspace{0.5ex}
+    \href{https://linkedin.com/in/csalex1}{\faLinkedin\ linkedin.com/in/csalex1} \textperiodcentered\
+    \href{https://github.com/csiszaralex}{\faGithub\ github.com/csiszaralex}
+\end{center}
+
+% ----- TAPASZTALAT -----
+\section*{Experience}
+
+\cventry{Software Engineer}{Quanopt Ltd., Budapest, Hungary (3-person software company, part-time)}{05/2024 – Present}
+\begin{itemize}
+    \item Architected a NestJS service that turns Google BigQuery data into performance statistics for exhibition owners.
+    \item Led the move from an Express wrapper to NestJS, from the cost-benefit proposal to the migration guide.
+    \item Consolidated multiple repositories into a pnpm and Turborepo monorepo.
+    \item Migrated the modules onto a generated OpenAPI contract and enforced it with CI quality gates on every pull request.
+    \item Contributed to the LLM service (Python, OpenAI) and scripted bulk generation of exhibition Q\&A for the chatbot.
+    \item Co-developed a WhatsApp bot on the chatbot backend, giving exhibition owners AI insights and controls on mobile.
+    \item Worked directly with the client's team from requirements to release, as one of two developers.
+\end{itemize}
+\vspace{0.6ex} % Logikai térköz
+
+\cventry{IT \& Digital Operations (Part-time)}{Bohém Birtok, Zamárdi, Hungary (family business: restaurant and event venue with accommodation)}{09/2026 – Present}
+\begin{itemize}
+    \item Own the venue's online operation: WordPress website, analytics, ad reporting and a self-hosted Twenty CRM.
+    \item Automated the back office with 50+ n8n workflows: inquiries, bookings, deposit invoices, payment matching, reviews.
+    \item Built an AI layer that pre-filters incoming email and drafts replies; nothing reaches a guest without human approval.
+\end{itemize}
+
+% ----- OKTATÁS -----
+\section*{Education}
+
+% Ahol egy bejegyzéshez egyetlen mondat tartozik, az sima sor, nem egyelemű felsorolás.
+% A szakdolgozat és a TDK-díj a képzéshez tartozik, ezért nincs külön Awards szekció.
+\cventry{M.S. in Computer Engineering}{Budapest University of Technology and Economics, Budapest, Hungary}{02/2025 – Expected 01/2027}
+
+\vspace{0.5ex}
+Thesis: an AI agent (Claude, MCP) that turns a user's need into a validated chain of data-space services.
+\vspace{1.2ex} % Logikai térköz
+
+\cventry{B.S. in Computer Engineering}{Budapest University of Technology and Economics, Budapest, Hungary}{09/2021 – 01/2025}
+
+\vspace{0.5ex}
+Special Prize, Scientific Students' Associations Conference (TDK), 2024, for the paper \\
+``Design and evaluation of decentralized collaboration patterns for trustworthy dataspaces''.
+
+% ----- PROJEKTEK -----
+\section*{Projects}
+
+% Egy sor projektenként, hogy a CV egy oldalon maradjon.
+\begin{itemize}
+    \item \textbf{\color{AccentColor}Hub:} a new-tab dashboard on the Chrome Web Store (React, Vite) with a serverless backend on Cloudflare Workers; over 70 releases, shipped through automated CI.
+    \item \textbf{\color{AccentColor}ClaudeSwitcher:} an Electron tray app that lists all Claude Code sessions, answers their permission prompts and jumps to the right VS Code tab; over 25 releases.
+    \item \textbf{\color{AccentColor}csalex.dev:} this portfolio, a statically rendered Next.js site and offline-capable PWA with strict security headers, CI checks and a CV built from LaTeX source.
+    \item \textbf{\color{AccentColor}Self-hosted Infrastructure:} a Debian VPS with over a dozen Docker services behind Traefik, git-based deploys, sops secrets, restic backups to Cloudflare R2 and WireGuard-only admin access.
+\end{itemize}
+
+% ----- VEZETŐI TAPASZTALAT -----
+\section*{Leadership}
+
+\cventry{Head of Division}{Schönherz Engineers \& IT Students Association (SVIE), Budapest, Hungary}{01/2025 – 03/2026}
+
+\vspace{0.5ex}
+One of 8 Division Heads on the central board, sharing responsibility for the operations and finances of 52 groups.
+
+% ----- KÉSZSÉGEK -----
+% Sima sorok, nem táblázat: a szövegkinyerés a táblázatot oszloponként olvasta
+% (előbb a címkék, utána a listák), így a címke elvált a tartalmától.
+\section*{Skills}
+
+\textbf{\color{AccentColor}Programming:} TypeScript, JavaScript, Python \\
+\textbf{\color{AccentColor}Frameworks \& Runtimes:} Node.js, NestJS, Express, Next.js, React, FastAPI, Electron \\
+\textbf{\color{AccentColor}Data \& AI:} PostgreSQL, MySQL, MongoDB, Google BigQuery, LLM agents, MCP, OpenAI API \\
+\textbf{\color{AccentColor}DevOps \& Tools:} Git, Linux, Docker, Traefik, GitHub Actions CI/CD, Turborepo monorepos, Cloudflare Workers, n8n \\
+\textbf{\color{AccentColor}Languages:} Hungarian (native), English (B2)
+
+% ----- A DOKUMENTUM VÉGE -----
+\end{document}

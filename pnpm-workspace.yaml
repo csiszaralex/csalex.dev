@@ -1,3 +1,10 @@
+overrides:
+  # One browserslist for the whole tree. serwist takes it as an optional peer, so two
+  # versions (@serwist/next pins its own) install serwist twice. app/sw.ts would then use
+  # one copy and defaultCache the other, and the offline fallback, attached only to
+  # strategies that pass `instanceof Strategy`, would never apply.
+  browserslist: ^4.29.6
+
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver

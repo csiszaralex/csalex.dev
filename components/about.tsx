@@ -1,6 +1,7 @@
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import { Code, Download, Globe, Layers, Server } from 'lucide-react';
 import Link from 'next/link';
 
@@ -44,11 +45,17 @@ export function About() {
           </div>
 
           <div className='pt-2'>
-            <Link href='/CV.pdf' target='_blank' rel='noopener noreferrer'>
-              <Button className='gap-2 rounded-full px-6 shadow-lg shadow-primary/10 hover:shadow-primary/20 h-12'>
-                <Download className='w-4 h-4' />
-                Download CV
-              </Button>
+            <Link
+              href='/CV.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
+              className={cn(
+                buttonVariants(),
+                'gap-2 rounded-full px-6 shadow-lg shadow-primary/10 hover:shadow-primary/20 h-12',
+              )}
+            >
+              <Download className='w-4 h-4' />
+              Download CV
             </Link>
           </div>
         </div>
@@ -70,7 +77,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {['TypeScript', 'NestJS', 'Modular Monolith', 'Python', 'FastAPI'].map((s) => (
+                {['TypeScript', 'NestJS', 'React', 'Modular Monolith', 'Python', 'FastAPI'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'
@@ -91,7 +98,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {['Google BigQuery', 'MCP Protocol', 'PostgreSQL', 'Redis'].map((s) => (
+                {['Google BigQuery', 'MCP Protocol', 'n8n', 'PostgreSQL', 'Redis'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'
@@ -112,7 +119,7 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className='px-4 pb-3 flex flex-wrap gap-2'>
-                {['Docker', 'Linux', 'Nginx', 'CI/CD', 'Self-hosting', 'Git'].map((s) => (
+                {['Docker', 'Linux', 'Nginx', 'Cloudflare Workers', 'CI/CD', 'Self-hosting', 'Git'].map((s) => (
                   <Badge
                     key={s}
                     variant='secondary'

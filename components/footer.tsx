@@ -1,8 +1,8 @@
+import { contactEmail, githubUrl, linkedinUrl } from '@/lib/site';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export function Footer() {
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
   return (
     <footer className='border-t border-border/40 bg-background/50 backdrop-blur-sm py-6 mt-12'>
       <div className='container max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6'>
@@ -15,7 +15,7 @@ export function Footer() {
 
         <div className='flex items-center gap-6'>
           <Link
-            href='https://github.com/csiszaralex'
+            href={githubUrl}
             target='_blank'
             className='text-muted-foreground hover:text-primary transition-colors'
           >
@@ -23,7 +23,7 @@ export function Footer() {
             <span className='sr-only'>GitHub</span>
           </Link>
           <Link
-            href='https://linkedin.com/in/csalex1'
+            href={linkedinUrl}
             target='_blank'
             className='text-muted-foreground hover:text-primary transition-colors'
           >

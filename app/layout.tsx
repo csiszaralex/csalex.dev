@@ -1,4 +1,6 @@
 import { ThemeProvider } from '@/components/theme-provider';
+import { siteDescription, siteName, siteUrl } from '@/lib/site';
+import { darkBackground, lightBackground } from '@/lib/theme';
 import type { Metadata, Viewport } from 'next';
 import { Fira_Code, Inter } from 'next/font/google';
 import './globals.css';
@@ -15,18 +17,37 @@ const firaCode = Fira_Code({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: light)', color: lightBackground },
+    { media: '(prefers-color-scheme: dark)', color: darkBackground },
   ],
 };
 
+// The role in the title is what search results and shared links show next to the name.
+const title = `${siteName} · Software Engineer`;
+
 export const metadata: Metadata = {
-  title: 'Alex Csiszar',
-  description: 'Portfolio of a Pragmatic Architect & FullStack Engineer.',
+  // Resolves relative URLs (canonical, Open Graph image) to absolute ones.
+  metadataBase: new URL(siteUrl),
+  title,
+  description: siteDescription,
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    url: '/',
+    siteName,
+    title,
+    description: siteDescription,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description: siteDescription,
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Alex Csiszar',
+    title: siteName,
   },
 };
 

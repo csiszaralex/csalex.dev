@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      # The production build refuses to run without a form ID (next.config.ts). CI only
+      # checks that the site builds; the deployed build gets the real ID from Vercel.
+      NEXT_PUBLIC_FORMSPREE_ID: ci-placeholder
+    steps:
+      - uses: actions/checkout@v7
+
+      # Installs the version pinned in package.json "packageManager".
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm build
+      # After the build: it generates next-env.d.ts (gitignored), which declares
+      # the types of static imports such as `@/app/icon.png`.
+      - run: pnpm exec tsc --noEmit

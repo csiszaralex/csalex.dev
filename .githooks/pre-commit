@@ -1,0 +1,9 @@
+#!/bin/sh
+# The CV source and its PDF travel together: a staged cv/cv.tex needs a staged
+# public/CV.pdf. Rebuild with `pnpm cv`. (Whether the PDF really matches the
+# source is checked by CI, .github/workflows/cv.yml.)
+staged=$(git diff --cached --name-only)
+if echo "$staged" | grep -qx 'cv/cv.tex' && ! echo "$staged" | grep -qx 'public/CV.pdf'; then
+  echo "pre-commit: cv/cv.tex is staged without public/CV.pdf. Run \`pnpm cv\`, then stage public/CV.pdf." >&2
+  exit 1
+fi

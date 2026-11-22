@@ -1,0 +1,33 @@
+name: CV
+
+# Compiles cv/cv.tex and checks that the committed public/CV.pdf matches it.
+# The PDF itself is built locally (`pnpm cv`) and committed with its source.
+on:
+  push:
+    branches: [main]
+    paths: [cv/**, public/CV.pdf, scripts/cv.mjs, .github/workflows/cv.yml]
+  pull_request:
+    paths: [cv/**, public/CV.pdf, scripts/cv.mjs, .github/workflows/cv.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: xu-cheng/latex-action@v4
+        with:
+          root_file: cv.tex
+          working_directory: cv
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # pdfinfo and pdftotext for scripts/cv.mjs; not preinstalled on the runner.
+      - run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - run: node scripts/cv.mjs check cv/cv.pdf

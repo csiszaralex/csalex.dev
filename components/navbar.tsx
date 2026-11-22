@@ -1,11 +1,17 @@
-'use client';
-
 import appIcon from '@/app/icon.png';
 import { ModeToggle } from '@/components/mode-toggle';
-import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
+import { githubUrl, linkedinUrl } from '@/lib/site';
 import { Github, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+
+// Each id must match a section's id attribute (components/projects.tsx, about.tsx, contact.tsx).
+const sections = [
+  { id: 'projects', label: 'Projects' },
+  { id: 'about', label: 'About' },
+  { id: 'contact', label: 'Contact' },
+];
 
 export function Navbar() {
   return (
@@ -29,22 +35,34 @@ export function Navbar() {
 
         {/* Jobb oldal: Ikonok + Theme Toggle */}
         <div className='flex items-center gap-2'>
-          <nav className='hidden md:flex items-center gap-1 mr-4'>
-            {/* Ide jöhetnének belső linkek később: Projects, About */}
+          <nav aria-label='Sections' className='hidden md:flex items-center gap-1 mr-4'>
+            {sections.map((section) => (
+              <Link
+                key={section.id}
+                href={`#${section.id}`}
+                className={buttonVariants({ variant: 'ghost', size: 'sm' })}
+              >
+                {section.label}
+              </Link>
+            ))}
           </nav>
 
           <div className='flex items-center gap-2 pr-4 border-r border-border/50'>
-            <Link href='https://github.com/csiszaralex' target='_blank'>
-              <Button variant='ghost' size='icon'>
-                <Github className='h-5 w-5' />
-                <span className='sr-only'>GitHub</span>
-              </Button>
+            <Link
+              href={githubUrl}
+              target='_blank'
+              className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+            >
+              <Github className='h-5 w-5' />
+              <span className='sr-only'>GitHub</span>
             </Link>
-            <Link href='https://linkedin.com/in/csalex1' target='_blank'>
-              <Button variant='ghost' size='icon'>
-                <Linkedin className='h-5 w-5' />
-                <span className='sr-only'>LinkedIn</span>
-              </Button>
+            <Link
+              href={linkedinUrl}
+              target='_blank'
+              className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+            >
+              <Linkedin className='h-5 w-5' />
+              <span className='sr-only'>LinkedIn</span>
             </Link>
           </div>
 

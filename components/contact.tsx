@@ -4,15 +4,17 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { contactEmail, githubUrl, linkedinUrl } from '@/lib/site';
 import { useForm, ValidationError } from '@formspree/react';
 import { CheckCircle2, Github, Linkedin, Loader2, Mail, Send } from 'lucide-react';
 import Link from 'next/link';
 
 export function Contact() {
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_ID || '';
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@csalex.dev';
 
   const [state, handleSubmit] = useForm(formId);
+  // Network failures (e.g. offline) arrive as form-level errors, not field errors.
+  const formError = (state.errors?.getFormErrors().length ?? 0) > 0;
 
   return (
     <section
@@ -38,14 +40,14 @@ export function Contact() {
           <CardContent className='p-8 md:p-10'>
             {/* SIKERES KÜLDÉS UTÁNI ÁLLAPOT */}
             {state.succeeded ? (
-              <div className='flex flex-col items-center justify-center text-center space-y-4 py-12 animate-in fade-in zoom-in duration-500'>
+              <div className='flex flex-col items-center justify-center text-center space-y-4 py-12 animate-in fade-in zoom-in duration-500 motion-reduce:animate-none'>
                 <div className='bg-green-500/10 p-4 rounded-full text-green-500 mb-2'>
                   <CheckCircle2 className='w-12 h-12' />
                 </div>
                 <h3 className='text-2xl font-bold'>Message Sent!</h3>
                 <p className='text-muted-foreground max-w-md'>
-                  Thanks for reaching out. I&apos;ve received your message and will get back to you
-                  at <strong>{contactEmail}</strong> as soon as possible.
+                  Thanks for reaching out. I&apos;ve received your message and will reply to the
+                  email address you gave as soon as possible.
                 </p>
                 <Button variant='outline' onClick={() => window.location.reload()} className='mt-6'>
                   Send another message
@@ -57,7 +59,7 @@ export function Contact() {
                 <div>
                   <h3 className='font-bold text-2xl mb-2 flex items-center gap-2'>
                     Send a Message
-                    <span className='flex h-2 w-2 rounded-full bg-primary animate-pulse'></span>
+                    <span className='flex h-2 w-2 rounded-full bg-primary animate-pulse motion-reduce:animate-none'></span>
                   </h3>
                   <p className='text-muted-foreground'>
                     Got a complex project or an engineering challenge?
@@ -73,6 +75,7 @@ export function Contact() {
                         type='text'
                         name='name'
                         placeholder='Name'
+                        aria-label='Name'
                         required
                         className='h-12 bg-background/50 border-border/60 focus:border-primary/50 transition-colors'
                       />
@@ -90,6 +93,7 @@ export function Contact() {
                         type='email'
                         name='email'
                         placeholder='Email'
+                        aria-label='Email'
                         required
                         className='h-12 bg-background/50 border-border/60 focus:border-primary/50 transition-colors'
                       />
@@ -108,6 +112,7 @@ export function Contact() {
                       id='message'
                       name='message'
                       placeholder='Tell me about the architecture, the scope, and the goals...'
+                      aria-label='Message'
                       required
                       className='min-h-50 bg-background/50 border-border/60 focus:border-primary/50 resize-y p-4 text-base leading-relaxed'
                     />
@@ -118,6 +123,13 @@ export function Contact() {
                       className='text-red-500 text-xs'
                     />
                   </div>
+
+                  {formError && (
+                    <p role='alert' className='text-red-500 text-sm'>
+                      Your message could not be sent. Please check your connection and try again,
+                      or write to <strong>{contactEmail}</strong>.
+                    </p>
+                  )}
 
                   <div className='flex justify-end'>
                     <Button
@@ -165,7 +177,7 @@ export function Contact() {
               </Link>
 
               <Link
-                href='https://linkedin.com/in/csalex1'
+                href={linkedinUrl}
                 target='_blank'
                 className='flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors p-3 rounded-lg hover:bg-primary/5 -mx-3'
               >
@@ -176,7 +188,7 @@ export function Contact() {
               </Link>
 
               <Link
-                href='https://github.com/csiszaralex'
+                href={githubUrl}
                 target='_blank'
                 className='flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors p-3 rounded-lg hover:bg-primary/5 -mx-3'
               >

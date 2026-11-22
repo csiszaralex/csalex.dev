@@ -1,0 +1,20 @@
+version: 2
+updates:
+  # pnpm projects use the npm ecosystem; Dependabot updates pnpm-lock.yaml.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # Minor and patch updates arrive as one PR a week. Each major update gets
+      # its own PR, because its breaking changes need checking first.
+      minor-and-patch:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ['*']
