@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@/components/theme-provider';
 import { siteDescription, siteName, siteUrl } from '@/lib/site';
+import { darkBackground, lightBackground } from '@/lib/theme';
 import type { Metadata, Viewport } from 'next';
 import { Fira_Code, Inter } from 'next/font/google';
 import './globals.css';
@@ -16,8 +17,8 @@ const firaCode = Fira_Code({
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+    { media: '(prefers-color-scheme: light)', color: lightBackground },
+    { media: '(prefers-color-scheme: dark)', color: darkBackground },
   ],
 };
 

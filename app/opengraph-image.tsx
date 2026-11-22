@@ -1,4 +1,5 @@
 import { siteDescription, siteName, siteUrl } from '@/lib/site';
+import { darkBackground, darkForeground, darkPrimary, lightPrimary } from '@/lib/theme';
 import { ImageResponse } from 'next/og';
 
 // The link preview image (LinkedIn, Slack, X…). Rendered once at build time.
@@ -6,13 +7,11 @@ export const alt = siteName;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-// The image renderer cannot read CSS variables or oklch(), so these are the hex
-// equivalents of the dark theme's --background, --foreground and --primary
-// tokens and the light theme's --primary (app/globals.css, :root and .dark).
-const background = '#020511';
-const foreground = '#f3faff';
-const blue = '#1f8dff';
-const orange = '#f45000';
+// The image renderer cannot read CSS variables or oklch(), hence the hex values.
+const background = darkBackground;
+const foreground = darkForeground;
+const blue = darkPrimary;
+const orange = lightPrimary;
 
 export default function OpengraphImage() {
   return new ImageResponse(

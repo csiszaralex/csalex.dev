@@ -1,4 +1,5 @@
 import { siteDescription, siteName } from '@/lib/site';
+import { darkBackground } from '@/lib/theme';
 import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
@@ -8,8 +9,9 @@ export default function manifest(): MetadataRoute.Manifest {
     description: siteDescription,
     start_url: '/',
     display: 'standalone',
-    background_color: '#0a0a0a',
-    theme_color: '#0a0a0a',
+    // The installed app opens in the dark theme's colors until the page loads.
+    background_color: darkBackground,
+    theme_color: darkBackground,
     icons: [
       {
         src: '/icon-192x192.png',
