@@ -6,6 +6,9 @@ const withSerwist = withSerwistInit({
   swSrc: 'app/sw.ts',
   swDest: 'public/sw.js',
   disable: process.env.NODE_ENV !== 'production',
+  // The default reloads the page when the connection returns, which would wipe a
+  // half-written contact form message. The offline page has its own retry button.
+  reloadOnOnline: false,
   // The offline fallback (app/sw.ts, fallbacks) is served from the precache, so it has to
   // be in it. A new revision on every build keeps it in step with the deployed styles.
   // Not `/`: precached pages are served cache-first, so visitors would see the previous
