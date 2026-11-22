@@ -65,7 +65,7 @@ const projects: Project[] = [
     description:
       'A minimalist new-tab dashboard for Chrome: weather, calendar, focus timer, notes and a daily photograph. Local-first, with a serverless backend of its own for images and quotes.',
     tech: ['React', 'Vite', 'Cloudflare Workers', 'Hono'],
-    link: 'https://github.com/csiszaralex/hub-dashboard-extension',
+    link: `${githubUrl}/hub-dashboard-extension`,
     secondaryLink: { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/hub/lkkjcbdikipienbdecgeajcecopdlbdm' },
     status: 'Chrome Web Store',
     icon: LayoutDashboard,
@@ -81,7 +81,7 @@ const projects: Project[] = [
     description:
       'A Windows tray app that lists every running Claude Code session, lets you answer their permission prompts from one place, and jumps to the right VS Code tab.',
     tech: ['Electron', 'TypeScript', 'Vitest', 'NSIS'],
-    link: 'https://github.com/csiszaralex/ClaudeSwitcher',
+    link: `${githubUrl}/ClaudeSwitcher`,
     secondaryLink: null,
     status: 'Active',
     icon: MonitorCog,
