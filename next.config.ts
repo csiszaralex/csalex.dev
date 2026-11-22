@@ -6,6 +6,11 @@ const withSerwist = withSerwistInit({
   swSrc: 'app/sw.ts',
   swDest: 'public/sw.js',
   disable: process.env.NODE_ENV !== 'production',
+  // The offline fallback (app/sw.ts, fallbacks) is served from the precache, so it has to
+  // be in it. A new revision on every build keeps it in step with the deployed styles.
+  // Not `/`: precached pages are served cache-first, so visitors would see the previous
+  // deploy until the new worker takes over. The runtime cache already keeps visited pages.
+  additionalPrecacheEntries: [{ url: '/~offline', revision: crypto.randomUUID() }],
 });
 
 const isDev = process.env.NODE_ENV === 'development';
