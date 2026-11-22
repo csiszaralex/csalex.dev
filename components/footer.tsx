@@ -1,5 +1,6 @@
 import { contactEmail, githubUrl, linkedinUrl } from '@/lib/site';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from '@/components/brand-icons';
+import { Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export function Footer() {
@@ -19,7 +20,7 @@ export function Footer() {
             target='_blank'
             className='text-muted-foreground hover:text-primary transition-colors'
           >
-            <Github className='w-5 h-5' />
+            <GithubIcon className='w-5 h-5' />
             <span className='sr-only'>GitHub</span>
           </Link>
           <Link
@@ -27,7 +28,7 @@ export function Footer() {
             target='_blank'
             className='text-muted-foreground hover:text-primary transition-colors'
           >
-            <Linkedin className='w-5 h-5' />
+            <LinkedinIcon className='w-5 h-5' />
             <span className='sr-only'>LinkedIn</span>
           </Link>
           <Link

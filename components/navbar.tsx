@@ -2,7 +2,7 @@ import appIcon from '@/app/icon.png';
 import { ModeToggle } from '@/components/mode-toggle';
 import { buttonVariants } from '@/components/ui/button';
 import { githubUrl, linkedinUrl } from '@/lib/site';
-import { Github, Linkedin } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from '@/components/brand-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -53,7 +53,7 @@ export function Navbar() {
               target='_blank'
               className={buttonVariants({ variant: 'ghost', size: 'icon' })}
             >
-              <Github className='h-5 w-5' />
+              <GithubIcon className='h-5 w-5' />
               <span className='sr-only'>GitHub</span>
             </Link>
             <Link
@@ -61,7 +61,7 @@ export function Navbar() {
               target='_blank'
               className={buttonVariants({ variant: 'ghost', size: 'icon' })}
             >
-              <Linkedin className='h-5 w-5' />
+              <LinkedinIcon className='h-5 w-5' />
               <span className='sr-only'>LinkedIn</span>
             </Link>
           </div>

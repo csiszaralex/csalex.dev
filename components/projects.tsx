@@ -9,12 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { GithubIcon } from '@/components/brand-icons';
 import { cn } from '@/lib/utils';
 import {
   BarChart3,
   Bot,
   ExternalLink,
-  Github,
   LayoutDashboard,
   Lock,
   MonitorCog,
@@ -259,7 +259,7 @@ export function Projects() {
                     'flex-1 gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
                   )}
                 >
-                  <Github className='w-4 h-4' />
+                  <GithubIcon className='w-4 h-4' />
                   Source Code
                 </Link>
               ) : (
