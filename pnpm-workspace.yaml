@@ -5,6 +5,8 @@ overrides:
   # strategies that pass `instanceof Strategy`, would never apply.
   browserslist: ^4.29.6
 
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+# Install scripts pnpm may run (true) or must skip (false). Both ship prebuilt
+# binaries, so their install scripts are not needed.
+allowBuilds:
+  sharp: false
+  unrs-resolver: false

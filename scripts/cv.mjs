@@ -9,10 +9,8 @@
 import { execFileSync } from 'node:child_process';
 import { copyFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 
-// Not import.meta.dirname: it needs Node 20.11, the README promises 20.9.
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const root = path.resolve(import.meta.dirname, '..');
 const source = path.join(root, 'cv', 'cv.tex');
 const buildDir = path.join(root, 'cv', 'build');
 const published = path.join(root, 'public', 'CV.pdf');
