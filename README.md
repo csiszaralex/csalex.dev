@@ -30,7 +30,7 @@ The site is statically prerendered and hosted on Vercel.
 
 ## 🚀 Local Development
 
-To run this project locally, you'll need Node.js 20.9+ (required by Next.js 16) and pnpm.
+To run this project locally, you'll need the Node.js version in `.nvmrc` and the pnpm version pinned in `package.json` (`packageManager`). Node.js 25+ ships without Corepack, so install it once: `npm install -g corepack@latest && corepack enable`.
 
 1.  **Clone the repository:**
 
