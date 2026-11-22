@@ -25,7 +25,7 @@
 \renewcommand{\familydefault}{\sfdefault}     % Legyen a Helvetica az alapértelmezett
 \usepackage[dvipsnames]{xcolor}               % Színek használatához
 \usepackage{setspace}                         % Sorköz csökkentéséhez
-\setstretch{0.91}                             % <<<--- VÉGLEGES SORKÖZ CSÖKKENTÉS (9%)
+\setstretch{1.0}                              % Normál sorköz: a tartalom kényelmesen kitölti az oldalt
 
 % ----- Egyéni szín definiálása -----
 \definecolor{AccentColor}{rgb}{0.2, 0.4, 0.6} % Egy professzionális sötétkék
@@ -46,7 +46,7 @@
 }
 
 % Szekció címek formázása: \Large, NEM NAGYBETŰS, MINIMÁLIS TÉRKÖZ
-\titlespacing{\section}{0pt}{1.8ex}{0.6ex} % MINIMÁLIS TÉRKÖZ
+\titlespacing{\section}{0pt}{2.4ex}{0.8ex}
 \titleformat{\section}
     {\Large\bfseries\color{AccentColor}}
     {}                               % Címke
@@ -55,7 +55,7 @@
     [\vspace{0.5ex}\color{AccentColor}\hrule height 1.5pt\vspace{0.5ex}]
 
 % Egyéni parancs a felsorolások tömörítésére
-\setlist[itemize]{leftmargin=*, itemsep=0ex, topsep=0.5ex, partopsep=0ex, parsep=0ex}
+\setlist[itemize]{leftmargin=*, itemsep=0.15ex, topsep=0.6ex, partopsep=0ex, parsep=0ex}
 
 % ----- Bejegyzés: cím és jobbra igazított dátum, alatta a hely -----
 % A PDF tartalmi sorrendjében a dátum közvetlenül a cím után áll (pdftotext -raw).
@@ -87,18 +87,19 @@
 % ----- TAPASZTALAT -----
 \section*{Experience}
 
-\cventry{Software Engineer}{Quanopt Ltd., Budapest, Hungary (3-person software company)}{05/2024 – Present}
+\cventry{Software Engineer}{Quanopt Ltd., Budapest, Hungary (3-person software company, part-time)}{05/2024 – Present}
 \begin{itemize}
-    \item Worked directly with the client's team from requirements to release, as one of two developers.
     \item Architected a NestJS service that turns Google BigQuery data into performance statistics for exhibition owners.
-    \item Developed an AI generator that fills empty fields in exhibition data models for the client's AI chatbot.
-    \item Engineered a WhatsApp bot on the AI chatbot backend, giving exhibition owners AI insights and controls on mobile.
-    \item Consolidated multiple repositories into a pnpm and Turborepo monorepo and led the move from an Express wrapper to NestJS, from the cost-benefit proposal to the migration guide.
-    \item Migrated the modules onto a generated AI contract and enforced it with CI quality gates on every pull request.
+    \item Led the move from an Express wrapper to NestJS, from the cost-benefit proposal to the migration guide.
+    \item Consolidated multiple repositories into a pnpm and Turborepo monorepo.
+    \item Migrated the modules onto a generated OpenAPI contract and enforced it with CI quality gates on every pull request.
+    \item Contributed to the LLM service (Python, OpenAI) and scripted bulk generation of exhibition Q\&A for the chatbot.
+    \item Co-developed a WhatsApp bot on the chatbot backend, giving exhibition owners AI insights and controls on mobile.
+    \item Worked directly with the client's team from requirements to release, as one of two developers.
 \end{itemize}
 \vspace{0.6ex} % Logikai térköz
 
-\cventry{IT \& Digital Operations}{Bohém Birtok, Zamárdi, Hungary (family-run restaurant and event venue with accommodation)}{09/2026 – Present}
+\cventry{IT \& Digital Operations (Part-time)}{Bohém Birtok, Zamárdi, Hungary (family business: restaurant and event venue with accommodation)}{09/2026 – Present}
 \begin{itemize}
     \item Own the venue's online operation: WordPress website, analytics, ad reporting and a self-hosted Twenty CRM.
     \item Automated the back office with 50+ n8n workflows: inquiries, bookings, deposit invoices, payment matching, reviews.
@@ -108,53 +109,49 @@
 % ----- OKTATÁS -----
 \section*{Education}
 
+% Ahol egy bejegyzéshez egyetlen mondat tartozik, az sima sor, nem egyelemű felsorolás.
+% A szakdolgozat és a TDK-díj a képzéshez tartozik, ezért nincs külön Awards szekció.
 \cventry{M.S. in Computer Engineering}{Budapest University of Technology and Economics, Budapest, Hungary}{02/2025 – Expected 01/2027}
-\vspace{0.6ex} % Logikai térköz
+
+\vspace{0.5ex}
+Thesis: an AI agent (Claude, MCP) that turns a user's need into a validated chain of data-space services.
+\vspace{1.2ex} % Logikai térköz
 
 \cventry{B.S. in Computer Engineering}{Budapest University of Technology and Economics, Budapest, Hungary}{09/2021 – 01/2025}
+
+\vspace{0.5ex}
+Special Prize, Scientific Students' Associations Conference (TDK), 2024, for the paper \\
+``Design and evaluation of decentralized collaboration patterns for trustworthy dataspaces''.
 
 % ----- PROJEKTEK -----
 \section*{Projects}
 
 % Egy sor projektenként, hogy a CV egy oldalon maradjon.
 \begin{itemize}
-    \item \textbf{\color{AccentColor}Data Space AI Orchestrator (M.S. Thesis):} a Claude agent that turns a user's need into a chain of data-space services through an MCP server over the Prometheus-X catalog, plus a structural and SHACL validator.
-    \item \textbf{\color{AccentColor}Hub:} a new-tab dashboard on the Chrome Web Store (React, Vite) with a serverless backend on Cloudflare Workers.
-    \item \textbf{\color{AccentColor}ClaudeSwitcher:} an Electron tray app that lists all Claude Code sessions and answers their permission prompts.
+    \item \textbf{\color{AccentColor}Hub:} a new-tab dashboard on the Chrome Web Store (React, Vite) with a serverless backend on Cloudflare Workers; over 70 releases, shipped through automated CI.
+    \item \textbf{\color{AccentColor}ClaudeSwitcher:} an Electron tray app that lists all Claude Code sessions, answers their permission prompts and jumps to the right VS Code tab; over 25 releases.
+    \item \textbf{\color{AccentColor}csalex.dev:} this portfolio, a statically rendered Next.js site and offline-capable PWA with strict security headers, CI checks and a CV built from LaTeX source.
     \item \textbf{\color{AccentColor}Self-hosted Infrastructure:} a Debian VPS with over a dozen Docker services behind Traefik, git-based deploys, sops secrets, restic backups to Cloudflare R2 and WireGuard-only admin access.
 \end{itemize}
 
-% ----- DÍJAK ÉS KUTATÁS -----
-\section*{Awards \& Research}
-
-% Ahol egy bejegyzéshez egyetlen mondat tartozik, az sima sor, nem egyelemű felsorolás.
-\cventry{Reward, Student Research Societies (TDK) Conference}{Budapest University of Technology and Economics}{11/2024}
-
-\vspace{0.5ex}
-Paper: "Design and evaluation of decentralized collaboration patterns for trustworthy dataspaces"
-
-% ----- VEZETŐI TAPASZTALAT ÉS TEVÉKENYSÉGEK -----
-\section*{Leadership \& Activities}
+% ----- VEZETŐI TAPASZTALAT -----
+\section*{Leadership}
 
 \cventry{Head of Division}{Schönherz Engineers \& IT Students Association (SVIE), Budapest, Hungary}{01/2025 – 03/2026}
 
 \vspace{0.5ex}
 One of 8 Division Heads on the central board, sharing responsibility for the operations and finances of 52 groups.
-\vspace{1.2ex} % Logikai térköz
-
-\cventry{Kitchen \& Service Lead (Seasonal)}{Bohém Birtok, Zamárdi, Hungary}{06/2026 – 10/2026}
-
-\vspace{0.5ex}
-Led a seasonal team through unfamiliar tasks across kitchen and service, regularly running the kitchen during shifts.
 
 % ----- KÉSZSÉGEK -----
 % Sima sorok, nem táblázat: a szövegkinyerés a táblázatot oszloponként olvasta
 % (előbb a címkék, utána a listák), így a címke elvált a tartalmától.
 \section*{Skills}
 
-\textbf{\color{AccentColor}Languages \& Frameworks:} TypeScript, Python, NestJS, Next.js, React, Express, FastAPI, Electron \\
-\textbf{\color{AccentColor}Databases \& Data:} PostgreSQL, MySQL, MongoDB, Google BigQuery \\
-\textbf{\color{AccentColor}Systems \& Tools:} Git, Linux, Docker, Traefik, n8n, Cloudflare Workers, GitHub Actions
+\textbf{\color{AccentColor}Programming:} TypeScript, JavaScript, Python \\
+\textbf{\color{AccentColor}Frameworks \& Runtimes:} Node.js, NestJS, Express, Next.js, React, FastAPI, Electron \\
+\textbf{\color{AccentColor}Data \& AI:} PostgreSQL, MySQL, MongoDB, Google BigQuery, LLM agents, MCP, OpenAI API \\
+\textbf{\color{AccentColor}DevOps \& Tools:} Git, Linux, Docker, Traefik, GitHub Actions CI/CD, Turborepo monorepos, Cloudflare Workers, n8n \\
+\textbf{\color{AccentColor}Languages:} Hungarian (native), English (B2)
 
 % ----- A DOKUMENTUM VÉGE -----
 \end{document}
