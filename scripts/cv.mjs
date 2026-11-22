@@ -32,6 +32,17 @@ function text(pdf) {
   return run('pdftotext', ['-enc', 'UTF-8', pdf, '-']).replace(/\s+/g, ' ').trim();
 }
 
+// Link targets, which the text alone does not show: a changed \href with the same
+// visible text would otherwise pass the check.
+function links(pdf) {
+  return run('pdfinfo', ['-url', pdf])
+    .split('\n')
+    .slice(1)
+    .map((line) => line.trim().split(/\s+/).slice(2).join(' '))
+    .filter(Boolean)
+    .join('\n');
+}
+
 function verify(pdf) {
   const pages = pageCount(pdf);
   if (pages !== 1) throw new Error(`${pdf} has ${pages} pages; the CV must fit on one.`);
@@ -51,7 +62,7 @@ if (command === 'build') {
   console.log(`CV built: ${path.relative(root, published)} (1 page)`);
 } else if (command === 'check' && arg) {
   verify(arg);
-  if (text(arg) !== text(published)) {
+  if (text(arg) !== text(published) || links(arg) !== links(published)) {
     throw new Error('public/CV.pdf does not match cv/cv.tex. Run `pnpm cv` and commit public/CV.pdf.');
   }
   console.log('CV check passed: one page, public/CV.pdf matches cv/cv.tex.');
