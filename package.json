@@ -33,7 +33,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "serwist": "^9.5.15",
-    "shadcn": "^3.8.5",
+    "shadcn": "^4.23.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
