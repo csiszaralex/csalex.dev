@@ -75,6 +75,7 @@ export function Contact() {
                         type='text'
                         name='name'
                         placeholder='Name'
+                        aria-label='Name'
                         required
                         className='h-12 bg-background/50 border-border/60 focus:border-primary/50 transition-colors'
                       />
@@ -92,6 +93,7 @@ export function Contact() {
                         type='email'
                         name='email'
                         placeholder='Email'
+                        aria-label='Email'
                         required
                         className='h-12 bg-background/50 border-border/60 focus:border-primary/50 transition-colors'
                       />
@@ -110,6 +112,7 @@ export function Contact() {
                       id='message'
                       name='message'
                       placeholder='Tell me about the architecture, the scope, and the goals...'
+                      aria-label='Message'
                       required
                       className='min-h-50 bg-background/50 border-border/60 focus:border-primary/50 resize-y p-4 text-base leading-relaxed'
                     />
