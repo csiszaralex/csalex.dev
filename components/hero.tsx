@@ -4,6 +4,7 @@ import { contactEmail } from '@/lib/site';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import { siDocker, siNestjs, siNextdotjs, siPython, siTypescript, type SimpleIcon } from 'simple-icons';
 
 export function Hero() {
@@ -98,14 +99,20 @@ function TechLogo({ icon, monochrome = false }: { icon: SimpleIcon; monochrome?:
     <div className='flex flex-col items-center gap-3 group cursor-default transition-transform hover:-translate-y-1 duration-300'>
       <div className='h-12 w-12 flex items-center justify-center'>
         {/* Decorative: the visible name below labels it. */}
+        {/* At rest every logo has the same neutral color; a grayscale filter would
+            turn a red logo (NestJS) darker than the blue ones. Hover shows the brand color. */}
         <svg
           aria-hidden='true'
           viewBox='0 0 24 24'
           width={40}
           height={40}
-          className='text-foreground opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300'
+          style={monochrome ? undefined : ({ '--brand': `#${icon.hex}` } as CSSProperties)}
+          className={cn(
+            'fill-current text-foreground opacity-50 group-hover:opacity-100 transition-all duration-300',
+            !monochrome && 'group-hover:text-(--brand)',
+          )}
         >
-          <path d={icon.path} fill={monochrome ? 'currentColor' : `#${icon.hex}`} />
+          <path d={icon.path} />
         </svg>
       </div>
       {/* Always visible: touch screens have no hover. */}
