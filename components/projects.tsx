@@ -176,18 +176,19 @@ export function Projects() {
           <Card
             key={project.title}
             className={cn(
-              'flex flex-col h-full bg-background/60 backdrop-blur-xl border-border/60 transition-all duration-300 group overflow-hidden',
+              'relative flex flex-col h-full bg-background/60 backdrop-blur-xl border-border/60 transition-all duration-300 group overflow-hidden',
               project.borderClass,
               project.glowClass,
             )}
           >
-            <CardHeader className='relative'>
-              {/* Halvány háttér csík a header mögött az adott színben.
-                  Full class name in the data: Tailwind only generates classes it finds literally. */}
-              <div
-                className={cn('absolute top-0 left-0 w-full h-1 opacity-50', project.stripeClass)}
-              />
-
+            {/* Colored stripe on the card's top edge, above the padding, so it never
+                runs through the header. Full class names in the data: Tailwind only
+                generates classes it finds literally. */}
+            <div
+              aria-hidden='true'
+              className={cn('absolute inset-x-0 top-0 h-1 opacity-50', project.stripeClass)}
+            />
+            <CardHeader>
               <div className='flex justify-between items-start mb-4'>
                 <div
                   className={cn(
