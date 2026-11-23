@@ -82,7 +82,7 @@ const projects: Project[] = [
       'A Windows tray app that lists every running Claude Code session, lets you answer their permission prompts from one place, and jumps to the right VS Code tab.',
     tech: ['Electron', 'TypeScript', 'Vitest', 'NSIS'],
     link: `${githubUrl}/ClaudeSwitcher`,
-    secondaryLink: null,
+    secondaryLink: { label: 'Download for Windows', href: `${githubUrl}/ClaudeSwitcher/releases/latest` },
     status: 'Active',
     icon: MonitorCog,
     colorClass: 'text-rose-500',
