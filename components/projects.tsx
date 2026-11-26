@@ -76,7 +76,7 @@ const projects: Project[] = [
     title: 'Bohém Birtok Operations',
     category: 'Business Automation',
     description:
-      'The back office of a rural event venue, automated: AI pre-filters incoming email and drafts replies that staff approve, web and ad leads land in a self-hosted CRM, deposit requests are matched to bookings and the deposit invoice goes out once payment arrives, and a daily report ties ad spend to real bookings. 60 n8n workflows on self-hosted infrastructure.',
+      "A rural event venue's back office on 60 n8n workflows: Claude pre-filters email and drafts replies that staff approve, leads land in a self-hosted CRM, deposits are tracked to payment, and a daily report ties ad spend to bookings.",
     tech: ['n8n', 'Twenty CRM', 'Claude API', 'Docker'],
     link: null,
     secondaryLink: null,
@@ -132,7 +132,7 @@ const projects: Project[] = [
     title: 'Hub',
     category: 'Browser Extension',
     description:
-      'A minimalist new-tab dashboard for Chrome: weather, calendar, focus timer, notes and a daily photograph. Local-first, with a serverless backend of its own for images and quotes.',
+      'A calm new-tab dashboard for Chrome: weather, calendar, focus timer, notes and a daily photograph. Local-first and account-free, with a serverless backend of its own for images and quotes.',
     tech: ['React', 'Vite', 'Cloudflare Workers', 'Hono'],
     link: `${githubUrl}/hub-dashboard-extension`,
     secondaryLink: { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/hub/lkkjcbdikipienbdecgeajcecopdlbdm' },
@@ -178,7 +178,7 @@ const projects: Project[] = [
     title: 'ClaudeSwitcher',
     category: 'Developer Tool',
     description:
-      'A Windows tray app that lists every running Claude Code session, lets you answer their permission prompts from one place, and jumps to the right VS Code tab.',
+      'A Windows tray app that lists every running Claude Code session, answers their permission prompts and questions from one place, and jumps to the right VS Code tab.',
     tech: ['Electron', 'TypeScript', 'Vitest', 'NSIS'],
     link: `${githubUrl}/ClaudeSwitcher`,
     secondaryLink: { label: 'Download for Windows', href: `${githubUrl}/ClaudeSwitcher/releases/latest` },
@@ -224,7 +224,7 @@ const projects: Project[] = [
     title: 'Self-hosted Infrastructure',
     category: 'DevOps',
     description:
-      'A Debian VM running 19 containerised services (35 containers) behind Traefik. Every five minutes it pulls its configuration from git and redeploys what changed. Secrets are encrypted with sops, nightly restic backups go to Cloudflare R2, and admin tools and SSH are reachable only over WireGuard.',
+      'One Debian VM running 19 containerised services behind Traefik, pulling its configuration from git every five minutes. Secrets encrypted with sops, nightly restic backups to Cloudflare R2, admin access only over WireGuard.',
     tech: ['Docker', 'Traefik', 'WireGuard', 'sops', 'restic'],
     link: null,
     secondaryLink: null,
@@ -253,7 +253,7 @@ const projects: Project[] = [
     title: 'Data Space AI Orchestrator',
     category: 'M.S. Thesis',
     description:
-      "A Claude-based mediator agent that turns a free-text need into a chain of data-space services in four auditable stages, querying the Prometheus-X catalog through an MCP server. A semantic validator checks each offering in a structural, a SHACL and an AI layer. After human approval and signature, two Prometheus-X connectors exchange the data under the contract's ODRL policy.",
+      'A Claude agent that turns a free-text need into a chain of data-space services in four auditable stages, through an MCP server. A SHACL validator checks every offering; after a human signs, two Prometheus-X connectors exchange the data.',
     tech: ['Python', 'Claude API', 'MCP', 'SHACL', 'Prometheus-X'],
     link: null,
     secondaryLink: null,
@@ -302,7 +302,7 @@ const projects: Project[] = [
     title: 'AI Exhibition Guide Platform',
     category: 'Quanopt · AI Backend & Analytics',
     description:
-      "The backend of an exhibition guide app: an AI service answers visitors' questions in text and voice, behind a NestJS gateway with rate limiting and trace IDs. A nightly job aggregates visitor events from BigQuery into some 25 cached reports for an admin dashboard.",
+      'The backend of an exhibition guide app: a Python AI service answers visitors in text and voice behind a NestJS gateway, and a nightly job turns BigQuery visitor events into some 25 cached reports for an admin dashboard.',
     tech: ['NestJS', 'Python', 'OpenAI API', 'BigQuery'],
     link: null,
     secondaryLink: null,
