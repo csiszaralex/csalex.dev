@@ -76,10 +76,13 @@ The CV's LaTeX source is `cv/cv.tex`. After changing it, run `pnpm cv` (needs a 
 │   ├── ~offline/              # Offline fallback page
 │   ├── opengraph-image.tsx    # Generated link preview image
 │   └── robots.ts, sitemap.ts  # Search engine files
+├── assets
+│   └── projects/              # Project screenshots, imported by components/projects.tsx
 ├── components
 │   ├── ui/                    # shadcn components (Button, Card, etc.)
 │   ├── hero.tsx               # Main landing section
 │   ├── projects.tsx           # Project showcase grid
+│   ├── project-gallery.tsx    # Screenshot dialog of a project card
 │   ├── about.tsx              # Engineering philosophy & stack
 │   └── contact.tsx            # Formspree integration
 ├── lib

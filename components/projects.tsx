@@ -10,7 +10,12 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { GithubIcon } from '@/components/brand-icons';
+import { ProjectGallery, type GalleryImage } from '@/components/project-gallery';
 import { cn } from '@/lib/utils';
+import hubOverview from '@/assets/projects/hub/1-overview.jpg';
+import hubFocus from '@/assets/projects/hub/3-focus.jpg';
+import hubMinimal from '@/assets/projects/hub/4-minimal.jpg';
+import hubArchitecture from '@/assets/projects/hub/5-architecture.svg';
 import {
   BarChart3,
   Bot,
@@ -33,6 +38,8 @@ type Project = {
   link: string | null;
   // An extra public link, e.g. a store listing.
   secondaryLink: { label: string; href: string } | null;
+  // Screenshots and diagrams, shown in a dialog.
+  gallery: GalleryImage[] | null;
   status: string;
   icon: LucideIcon;
   colorClass: string;
@@ -51,6 +58,7 @@ const projects: Project[] = [
     tech: ['n8n', 'Twenty CRM', 'Claude API', 'Docker'],
     link: null,
     secondaryLink: null,
+    gallery: null,
     status: 'Daily use',
     icon: Workflow,
     colorClass: 'text-emerald-500',
@@ -67,6 +75,31 @@ const projects: Project[] = [
     tech: ['React', 'Vite', 'Cloudflare Workers', 'Hono'],
     link: `${githubUrl}/hub-dashboard-extension`,
     secondaryLink: { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/hub/lkkjcbdikipienbdecgeajcecopdlbdm' },
+    // Images and captions come from the Hub repo (assets/portfolio/).
+    gallery: [
+      {
+        src: hubOverview,
+        alt: 'Hub new tab with calendar, countdown, weather, clock and a quote over a mountain photo',
+        caption:
+          'Everything at a glance: your next meetings, the weather, a countdown and today’s quote over a fresh photo.',
+      },
+      {
+        src: hubFocus,
+        alt: 'Hub new tab with the focus timer running at the top',
+        caption:
+          'One focus timer for every tab: it runs in the background and notifies you once, even with no tab open.',
+      },
+      {
+        src: hubMinimal,
+        alt: 'Hub new tab showing only the clock, the date and a quote over a forest photo',
+        caption: 'Hide whatever you don’t need. With every widget off, Hub is just the time and a photograph.',
+      },
+      {
+        src: hubArchitecture,
+        alt: 'Architecture diagram: the Chrome extension, the Hub API Cloudflare Worker and the services each one calls',
+        caption: 'Privacy by design: keys stay in the Worker; notes, calendar and location never pass through it.',
+      },
+    ],
     status: 'Chrome Web Store',
     icon: LayoutDashboard,
     colorClass: 'text-cyan-500',
@@ -83,6 +116,7 @@ const projects: Project[] = [
     tech: ['Electron', 'TypeScript', 'Vitest', 'NSIS'],
     link: `${githubUrl}/ClaudeSwitcher`,
     secondaryLink: { label: 'Download for Windows', href: `${githubUrl}/ClaudeSwitcher/releases/latest` },
+    gallery: null,
     status: 'Active',
     icon: MonitorCog,
     colorClass: 'text-rose-500',
@@ -99,6 +133,7 @@ const projects: Project[] = [
     tech: ['Docker', 'Traefik', 'WireGuard', 'sops', 'restic'],
     link: null,
     secondaryLink: null,
+    gallery: null,
     status: 'Production',
     icon: Server,
     colorClass: 'text-blue-500',
@@ -115,6 +150,7 @@ const projects: Project[] = [
     tech: ['Python', 'FastAPI', 'MCP', 'Claude API'],
     link: null,
     secondaryLink: null,
+    gallery: null,
     status: 'Research',
     icon: Bot,
     colorClass: 'text-purple-500',
@@ -131,6 +167,7 @@ const projects: Project[] = [
     tech: ['BigQuery', 'NestJS', 'GCP', 'Microservices'],
     link: null,
     secondaryLink: null,
+    gallery: null,
     status: 'Production',
     icon: BarChart3,
     colorClass: 'text-orange-500',
@@ -140,6 +177,11 @@ const projects: Project[] = [
     glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(249,115,22,0.3)]',
   },
 ];
+
+const footerButtonClass = cn(
+  buttonVariants({ variant: 'ghost' }),
+  'flex-1 gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
+);
 
 export function Projects() {
   return (
@@ -237,33 +279,35 @@ export function Projects() {
               </div>
             </CardContent>
 
-            <CardFooter className='pt-2 mt-auto gap-2'>
-              {project.secondaryLink && (
-                <Link
-                  href={project.secondaryLink.href}
-                  target='_blank'
-                  className={cn(
-                    buttonVariants({ variant: 'ghost' }),
-                    'flex-1 gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
-                  )}
-                >
-                  <ExternalLink className='w-4 h-4' />
-                  {project.secondaryLink.label}
-                </Link>
+            <CardFooter className='pt-2 mt-auto gap-2 flex-col items-stretch'>
+              {project.gallery && (
+                // flex-none: in the footer's column, flex-1 would squash its height.
+                <ProjectGallery
+                  title={project.title}
+                  images={project.gallery}
+                  className={cn(footerButtonClass, 'flex-none')}
+                />
               )}
-              {project.link ? (
-                <Link
-                  href={project.link}
-                  target='_blank'
-                  className={cn(
-                    buttonVariants({ variant: 'ghost' }),
-                    'flex-1 gap-2 font-mono text-xs h-10 border border-border/40 hover:bg-primary/5 hover:text-primary hover:border-primary/20 transition-all',
+              {/* Its own row, not a wrapping one: two links only just fit side by side,
+                  and a wrapping row would stack them instead of shrinking them. */}
+              {(project.secondaryLink || project.link) && (
+                <div className='flex gap-2'>
+                  {project.secondaryLink && (
+                    <Link href={project.secondaryLink.href} target='_blank' className={footerButtonClass}>
+                      <ExternalLink className='w-4 h-4' />
+                      {project.secondaryLink.label}
+                    </Link>
                   )}
-                >
-                  <GithubIcon className='w-4 h-4' />
-                  Source Code
-                </Link>
-              ) : (
+                  {project.link && (
+                    <Link href={project.link} target='_blank' className={footerButtonClass}>
+                      <GithubIcon className='w-4 h-4' />
+                      Source Code
+                    </Link>
+                  )}
+                </div>
+              )}
+              {/* Only when the card has nothing else to show for itself. */}
+              {!project.link && !project.gallery && !project.secondaryLink && (
                 <Button
                   variant='ghost'
                   disabled
