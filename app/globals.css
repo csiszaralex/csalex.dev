@@ -65,7 +65,8 @@
   --foreground: oklch(0.14 0.05 285); /* Sötétkékesszürke szöveg */
 
   /* NARANCS ACCENT */
-  --primary: oklch(0.65 0.22 45); /* Élénk Narancs */
+  /* Deep enough for white button text to reach 4.5:1 (WCAG AA); 0.65 gave 3.4:1. */
+  --primary: oklch(0.57 0.2 42); /* Élénk Narancs */
   --primary-foreground: oklch(0.985 0 0);
 
   --muted: oklch(0.96 0.01 90);
@@ -97,23 +98,23 @@
 .dark {
   /* SÖTÉT MÓD (Dark Mode) */
   --background: oklch(0.12 0.03 260); /* Mély sötétkékesszürke (NEM #000) */
-  --foreground: oklch(0.98 0.01 240);
+  --foreground: oklch(0.93 0.01 240);
 
   /* KÉK ACCENT */
   --primary: oklch(0.65 0.2 255); /* Neon Kék */
   --primary-foreground: oklch(0.12 0.03 260);
 
   --muted: oklch(0.18 0.04 260);
-  --muted-foreground: oklch(0.7 0.05 260);
+  --muted-foreground: oklch(0.75 0.03 260);
 
   --card: oklch(0.14 0.03 260);
-  --card-foreground: oklch(0.98 0.01 240);
+  --card-foreground: oklch(0.93 0.01 240);
   --popover: oklch(0.14 0.03 260);
-  --popover-foreground: oklch(0.98 0.01 240);
+  --popover-foreground: oklch(0.93 0.01 240);
   --secondary: oklch(0.2 0.05 260);
-  --secondary-foreground: oklch(0.98 0.01 240);
+  --secondary-foreground: oklch(0.93 0.01 240);
   --accent: oklch(0.2 0.05 260);
-  --accent-foreground: oklch(0.98 0.01 240);
+  --accent-foreground: oklch(0.93 0.01 240);
   --destructive: oklch(0.6 0.2 20);
   --border: oklch(0.25 0.05 260);
   --input: oklch(0.25 0.05 260);

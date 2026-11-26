@@ -122,7 +122,7 @@ const projects: Project[] = [
     },
     status: 'Daily use',
     icon: Workflow,
-    colorClass: 'text-emerald-500',
+    colorClass: 'text-emerald-700 dark:text-emerald-400',
     bgClass: 'bg-emerald-500/10',
     stripeClass: 'bg-emerald-500/80',
     borderClass: 'hover:border-emerald-500/50',
@@ -168,7 +168,7 @@ const projects: Project[] = [
     },
     status: 'Chrome Web Store',
     icon: LayoutDashboard,
-    colorClass: 'text-cyan-500',
+    colorClass: 'text-cyan-700 dark:text-cyan-400',
     bgClass: 'bg-cyan-500/10',
     stripeClass: 'bg-cyan-500/80',
     borderClass: 'hover:border-cyan-500/50',
@@ -214,7 +214,7 @@ const projects: Project[] = [
     },
     status: 'Active',
     icon: MonitorCog,
-    colorClass: 'text-rose-500',
+    colorClass: 'text-rose-700 dark:text-rose-400',
     bgClass: 'bg-rose-500/10',
     stripeClass: 'bg-rose-500/80',
     borderClass: 'hover:border-rose-500/50',
@@ -243,7 +243,7 @@ const projects: Project[] = [
     },
     status: 'Production',
     icon: Server,
-    colorClass: 'text-blue-500',
+    colorClass: 'text-blue-700 dark:text-blue-400',
     bgClass: 'bg-blue-500/10',
     stripeClass: 'bg-blue-500/80',
     borderClass: 'hover:border-blue-500/50',
@@ -292,7 +292,7 @@ const projects: Project[] = [
     note: 'Code and thesis public after the defense',
     status: 'Research',
     icon: Bot,
-    colorClass: 'text-purple-500',
+    colorClass: 'text-purple-700 dark:text-purple-400',
     bgClass: 'bg-purple-500/10',
     stripeClass: 'bg-purple-500/80',
     borderClass: 'hover:border-purple-500/50',
@@ -321,7 +321,7 @@ const projects: Project[] = [
     },
     status: 'Production',
     icon: MessagesSquare,
-    colorClass: 'text-orange-500',
+    colorClass: 'text-orange-700 dark:text-orange-400',
     bgClass: 'bg-orange-500/10',
     stripeClass: 'bg-orange-500/80',
     borderClass: 'hover:border-orange-500/50',
@@ -420,12 +420,10 @@ export function Projects() {
               <CardTitle className='text-xl font-bold group-hover:text-foreground transition-colors'>
                 {project.title}
               </CardTitle>
+              {/* Full color, no opacity: the 12px category needs 4.5:1, and the -700/-400
+                  shades in colorClass reach it on both themes. */}
               <CardDescription
-                className={cn(
-                  'font-medium text-xs uppercase tracking-widest mt-1',
-                  project.colorClass,
-                  'opacity-80',
-                )}
+                className={cn('font-medium text-xs uppercase tracking-widest mt-1', project.colorClass)}
               >
                 {project.category}
               </CardDescription>

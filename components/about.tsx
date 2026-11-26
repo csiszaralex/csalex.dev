@@ -123,7 +123,7 @@ export function About() {
                   <Badge
                     key={s}
                     variant='secondary'
-                    className='bg-orange-500/5 text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 font-normal'
+                    className='bg-orange-500/5 text-orange-700 dark:text-orange-400 hover:bg-orange-500/10 font-normal'
                   >
                     {s}
                   </Badge>
