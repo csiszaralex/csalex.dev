@@ -89,24 +89,28 @@ const projects: Project[] = [
       images: [
         {
           src: bohemDashboard,
+          hungarianUi: true,
           alt: 'Staff app "Today" view with queues of AI questions, replies to approve and bounced addresses',
           caption:
             'The daily “Today” view: incoming mail is pre-sorted into queues, with AI-drafted replies, questions from the AI and bounced addresses waiting for a human decision.',
         },
         {
           src: bohemDraft,
+          hungarianUi: true,
           alt: 'An AI-drafted reply to a wedding inquiry under the guest’s original email, with an approve shortcut',
           caption:
             'An AI-drafted reply to a wedding inquiry, shown under the guest’s original email and editable before a human approves and sends it.',
         },
         {
           src: bohemDeposits,
+          hungarianUi: true,
           alt: 'Finance page listing unpaid deposit requests with due dates, status tags and a “transfer arrived” button',
           caption:
             'Deposit requests that have been issued but not yet paid, with due-date warnings and a one-click “transfer arrived” action that records the payment.',
         },
         {
           src: bohemAds,
+          hungarianUi: true,
           alt: 'Ads page with spend, impressions, clicks, CRM inquiries, bookings and cost per booking for each ad combination',
           caption:
             'Ad performance per image and copy combination, refreshed daily: spend, impressions and clicks, traced through to CRM inquiries, bookings and cost per booking.',
@@ -264,18 +268,21 @@ const projects: Project[] = [
       images: [
         {
           src: thesisRequest,
+          hungarianUi: true,
           alt: 'Orchestrator web UI: a free-text request and the decomposition stage with its data layers and policy',
           caption:
             'A free-text request (a company wants a training recommender built on the BME VIK course catalogue, non-commercial, EU only) broken down by Claude into data layers and a machine-readable policy.',
         },
         {
           src: thesisPolicy,
+          hungarianUi: true,
           alt: 'Policy and validation stage: a table of candidates with passed rules, a VALID validator verdict and scores',
           caption:
             'The policy stage: each candidate passes the region, commercial-use, PII and catalogue-entry rules, and the semantic validator marks the course catalogue VALID.',
         },
         {
           src: thesisExchange,
+          hungarianUi: true,
           alt: 'Data exchange result: verdict delivered, import success, 1,492 records and a sample of course records',
           caption:
             'After human approval and signature, two Prometheus-X connectors delivered 1,492 course records under the signed contract’s policy.',
