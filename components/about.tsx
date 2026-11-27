@@ -13,7 +13,7 @@ export function About() {
     >
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-start'>
         {/* --- BAL OLDAL: BEMUTATKOZÁS --- */}
-        <div className='space-y-8'>
+        <div className='reveal space-y-8'>
           <div className='space-y-2'>
             <h2 className='text-3xl md:text-4xl font-bold tracking-tight flex items-center gap-2'>
               About Me <span className='text-primary'>.</span>
@@ -69,7 +69,7 @@ export function About() {
 
           <div className='grid gap-4'>
             {/* Backend */}
-            <Card className='bg-background/50 backdrop-blur border-border/60 hover:border-primary/20 transition-colors'>
+            <Card className='reveal bg-background/50 backdrop-blur border-border/60 hover:border-primary/20 transition-colors'>
               <CardHeader className='py-3 px-4'>
                 <CardTitle className='text-sm font-medium flex items-center gap-2 text-foreground/80'>
                   <Server className='w-4 h-4 text-blue-500' />
@@ -90,7 +90,7 @@ export function About() {
             </Card>
 
             {/* AI & Data */}
-            <Card className='bg-background/50 backdrop-blur border-border/60 hover:border-primary/20 transition-colors'>
+            <Card className='reveal bg-background/50 backdrop-blur border-border/60 hover:border-primary/20 transition-colors'>
               <CardHeader className='py-3 px-4'>
                 <CardTitle className='text-sm font-medium flex items-center gap-2 text-foreground/80'>
                   <Layers className='w-4 h-4 text-purple-500' />
@@ -111,7 +111,7 @@ export function About() {
             </Card>
 
             {/* Infra */}
-            <Card className='bg-background/50 backdrop-blur border-border/60 hover:border-primary/20 transition-colors'>
+            <Card className='reveal bg-background/50 backdrop-blur border-border/60 hover:border-primary/20 transition-colors'>
               <CardHeader className='py-3 px-4'>
                 <CardTitle className='text-sm font-medium flex items-center gap-2 text-foreground/80'>
                   <Globe className='w-4 h-4 text-orange-500' />
@@ -123,7 +123,7 @@ export function About() {
                   <Badge
                     key={s}
                     variant='secondary'
-                    className='bg-orange-500/5 text-orange-600 dark:text-orange-400 hover:bg-orange-500/10 font-normal'
+                    className='bg-orange-500/5 text-orange-700 dark:text-orange-400 hover:bg-orange-500/10 font-normal'
                   >
                     {s}
                   </Badge>

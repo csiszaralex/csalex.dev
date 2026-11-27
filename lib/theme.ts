@@ -3,7 +3,7 @@
 // (app/layout.tsx), the PWA manifest (app/manifest.ts) and the link preview image
 // renderer (app/opengraph-image.tsx). Update them together with globals.css.
 export const lightBackground = '#fdfaf3'; // :root --background
-export const lightPrimary = '#f45000'; // :root --primary
+export const lightPrimary = '#d13b00'; // :root --primary
 export const darkBackground = '#020511'; // .dark --background
-export const darkForeground = '#f3faff'; // .dark --foreground
+export const darkForeground = '#e2e9ee'; // .dark --foreground
 export const darkPrimary = '#1f8dff'; // .dark --primary

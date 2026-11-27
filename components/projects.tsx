@@ -16,12 +16,32 @@ import hubOverview from '@/assets/projects/hub/1-overview.jpg';
 import hubFocus from '@/assets/projects/hub/3-focus.jpg';
 import hubMinimal from '@/assets/projects/hub/4-minimal.jpg';
 import hubArchitecture from '@/assets/projects/hub/5-architecture.svg';
+import hubArchitectureDark from '@/assets/projects/hub/5-architecture-dark.svg';
+import bohemDashboard from '@/assets/projects/bohem/1-daily-dashboard.png';
+import bohemDraft from '@/assets/projects/bohem/2-ai-draft-approval.png';
+import bohemDeposits from '@/assets/projects/bohem/3-deposits-payments.png';
+import bohemAds from '@/assets/projects/bohem/4-ads-daily-results.png';
+import bohemOperations from '@/assets/projects/bohem/operations.png';
+import bohemOperationsDark from '@/assets/projects/bohem/operations-dark.png';
+import switcherList from '@/assets/projects/claudeswitcher/list.png';
+import switcherQuestion from '@/assets/projects/claudeswitcher/question.png';
+import switcherPeek from '@/assets/projects/claudeswitcher/peek.png';
+import switcherUntil from '@/assets/projects/claudeswitcher/until.png';
+import infraArchitecture from '@/assets/projects/infra/architecture.png';
+import infraArchitectureDark from '@/assets/projects/infra/architecture-dark.png';
+import quanoptArchitecture from '@/assets/projects/quanopt/ai-guide-platform.png';
+import quanoptArchitectureDark from '@/assets/projects/quanopt/ai-guide-platform-dark.png';
+import thesisRequest from '@/assets/projects/thesis/01-request-and-stages.png';
+import thesisPolicy from '@/assets/projects/thesis/02-policy-and-validation.png';
+import thesisExchange from '@/assets/projects/thesis/03-pdc-data-exchange.png';
+import thesisArchitecture from '@/assets/projects/thesis/architecture.png';
+import thesisArchitectureDark from '@/assets/projects/thesis/architecture-dark.png';
 import {
-  BarChart3,
   Bot,
   ExternalLink,
   LayoutDashboard,
   Lock,
+  MessagesSquare,
   MonitorCog,
   Server,
   Workflow,
@@ -38,8 +58,10 @@ type Project = {
   link: string | null;
   // An extra public link, e.g. a store listing.
   secondaryLink: { label: string; href: string } | null;
-  // Screenshots and diagrams, shown in a dialog.
-  gallery: GalleryImage[] | null;
+  // Screenshots and diagrams, shown in a dialog; the label names the button.
+  gallery: { label: string; images: GalleryImage[] } | null;
+  // A short line under the buttons, e.g. why there is no source link yet.
+  note?: string;
   status: string;
   icon: LucideIcon;
   colorClass: string;
@@ -54,14 +76,57 @@ const projects: Project[] = [
     title: 'Bohém Birtok Operations',
     category: 'Business Automation',
     description:
-      'The back office of a rural event venue, automated: AI pre-filters incoming email and drafts replies for human approval, inquiries and bookings land in the CRM, deposit invoices are issued and matched to payments, and a daily report tracks the ads. 50+ n8n workflows on self-hosted infrastructure.',
+      "A rural event venue's back office on 60 n8n workflows: Claude pre-filters email and drafts replies that staff approve, leads land in a self-hosted CRM, deposits are tracked to payment, and a daily report ties ad spend to bookings.",
     tech: ['n8n', 'Twenty CRM', 'Claude API', 'Docker'],
     link: null,
     secondaryLink: null,
-    gallery: null,
+    // Screenshots: the staff app on a local mock backend, every name, email, phone number
+    // (+36 30 000 00NN) and amount invented; the UI is Hungarian only. Diagram: rendered
+    // from the CRM repo's crm/portfolio/ SVGs. No third-party service names in either
+    // until Alex approves naming them.
+    gallery: {
+      label: 'Screenshots',
+      images: [
+        {
+          src: bohemDashboard,
+          hungarianUi: true,
+          alt: 'Staff app "Today" view with queues of AI questions, replies to approve and bounced addresses',
+          caption:
+            'The daily “Today” view: incoming mail is pre-sorted into queues, with AI-drafted replies, questions from the AI and bounced addresses waiting for a human decision.',
+        },
+        {
+          src: bohemDraft,
+          hungarianUi: true,
+          alt: 'An AI-drafted reply to a wedding inquiry under the guest’s original email, with an approve shortcut',
+          caption:
+            'An AI-drafted reply to a wedding inquiry, shown under the guest’s original email and editable before a human approves and sends it.',
+        },
+        {
+          src: bohemDeposits,
+          hungarianUi: true,
+          alt: 'Finance page listing unpaid deposit requests with due dates, status tags and a “transfer arrived” button',
+          caption:
+            'Deposit requests that have been issued but not yet paid, with due-date warnings and a one-click “transfer arrived” action that records the payment.',
+        },
+        {
+          src: bohemAds,
+          hungarianUi: true,
+          alt: 'Ads page with spend, impressions, clicks, CRM inquiries, bookings and cost per booking for each ad combination',
+          caption:
+            'Ad performance per image and copy combination, refreshed daily: spend, impressions and clicks, traced through to CRM inquiries, bookings and cost per booking.',
+        },
+        {
+          src: bohemOperations,
+          darkSrc: bohemOperationsDark,
+          alt: 'Diagram of four automated lanes (email, inquiries, deposits, ads) feeding a self-hosted Twenty CRM with a staff web app',
+          caption:
+            'How the venue’s back office runs: n8n workflows feed a self-hosted Twenty CRM, Claude drafts and filters email, and staff approve every reply.',
+        },
+      ],
+    },
     status: 'Daily use',
     icon: Workflow,
-    colorClass: 'text-emerald-500',
+    colorClass: 'text-emerald-700 dark:text-emerald-400',
     bgClass: 'bg-emerald-500/10',
     stripeClass: 'bg-emerald-500/80',
     borderClass: 'hover:border-emerald-500/50',
@@ -71,38 +136,43 @@ const projects: Project[] = [
     title: 'Hub',
     category: 'Browser Extension',
     description:
-      'A minimalist new-tab dashboard for Chrome: weather, calendar, focus timer, notes and a daily photograph. Local-first, with a serverless backend of its own for images and quotes.',
+      'A calm new-tab dashboard for Chrome: weather, calendar, focus timer, notes and a daily photograph. Local-first and account-free, with a serverless backend of its own for images and quotes.',
     tech: ['React', 'Vite', 'Cloudflare Workers', 'Hono'],
     link: `${githubUrl}/hub-dashboard-extension`,
     secondaryLink: { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/hub/lkkjcbdikipienbdecgeajcecopdlbdm' },
-    // Images and captions come from the Hub repo (assets/portfolio/).
-    gallery: [
-      {
-        src: hubOverview,
-        alt: 'Hub new tab with calendar, countdown, weather, clock and a quote over a mountain photo',
-        caption:
-          'Everything at a glance: your next meetings, the weather, a countdown and today’s quote over a fresh photo.',
-      },
-      {
-        src: hubFocus,
-        alt: 'Hub new tab with the focus timer running at the top',
-        caption:
-          'One focus timer for every tab: it runs in the background and notifies you once, even with no tab open.',
-      },
-      {
-        src: hubMinimal,
-        alt: 'Hub new tab showing only the clock, the date and a quote over a forest photo',
-        caption: 'Hide whatever you don’t need. With every widget off, Hub is just the time and a photograph.',
-      },
-      {
-        src: hubArchitecture,
-        alt: 'Architecture diagram: the Chrome extension, the Hub API Cloudflare Worker and the services each one calls',
-        caption: 'Privacy by design: keys stay in the Worker; notes, calendar and location never pass through it.',
-      },
-    ],
+    // Images and captions come from the Hub repo (assets/portfolio/). The dark diagram
+    // exists only here: the light one with its palette swapped.
+    gallery: {
+      label: 'Screenshots',
+      images: [
+        {
+          src: hubOverview,
+          alt: 'Hub new tab with calendar, countdown, weather, clock and a quote over a mountain photo',
+          caption:
+            'Everything at a glance: your next meetings, the weather, a countdown and today’s quote over a fresh photo.',
+        },
+        {
+          src: hubFocus,
+          alt: 'Hub new tab with the focus timer running at the top',
+          caption:
+            'One focus timer for every tab: it runs in the background and notifies you once, even with no tab open.',
+        },
+        {
+          src: hubMinimal,
+          alt: 'Hub new tab showing only the clock, the date and a quote over a forest photo',
+          caption: 'Hide whatever you don’t need. With every widget off, Hub is just the time and a photograph.',
+        },
+        {
+          src: hubArchitecture,
+          darkSrc: hubArchitectureDark,
+          alt: 'Architecture diagram: the Chrome extension, the Hub API Cloudflare Worker and the services each one calls',
+          caption: 'Privacy by design: keys stay in the Worker; notes, calendar and location never pass through it.',
+        },
+      ],
+    },
     status: 'Chrome Web Store',
     icon: LayoutDashboard,
-    colorClass: 'text-cyan-500',
+    colorClass: 'text-cyan-700 dark:text-cyan-400',
     bgClass: 'bg-cyan-500/10',
     stripeClass: 'bg-cyan-500/80',
     borderClass: 'hover:border-cyan-500/50',
@@ -112,14 +182,43 @@ const projects: Project[] = [
     title: 'ClaudeSwitcher',
     category: 'Developer Tool',
     description:
-      'A Windows tray app that lists every running Claude Code session, lets you answer their permission prompts from one place, and jumps to the right VS Code tab.',
+      'A Windows tray app that lists every running Claude Code session, answers their permission prompts and questions from one place, and jumps to the right VS Code tab.',
     tech: ['Electron', 'TypeScript', 'Vitest', 'NSIS'],
     link: `${githubUrl}/ClaudeSwitcher`,
     secondaryLink: { label: 'Download for Windows', href: `${githubUrl}/ClaudeSwitcher/releases/latest` },
-    gallery: null,
+    // The real overlay build rendered with invented demo sessions, its Hungarian GUI text
+    // translated to English. English time phrases are not parsed yet (apps/desktop/src/
+    // renderer/until-time.ts reads Hungarian only); that is coming, per Alex, 2026-11-26.
+    gallery: {
+      label: 'Screenshots',
+      images: [
+        {
+          src: switcherList,
+          alt: 'ClaudeSwitcher overlay listing eight demo sessions with their states and a Bash permission request below',
+          caption:
+            'The session list: every running Claude Code session with its live state, and a Bash permission request ready to allow or deny from one place.',
+        },
+        {
+          src: switcherQuestion,
+          alt: 'ClaudeSwitcher overlay showing a multiple-choice question from a session with three options',
+          caption: 'Answering a session’s multiple-choice question straight from the overlay, without switching to its VS Code window.',
+        },
+        {
+          src: switcherPeek,
+          alt: 'ClaudeSwitcher peek view of a finished session: the prompt, its tool calls and the answer',
+          caption: 'Peeking into a finished session’s conversation (prompt, tool calls, answer) before jumping to it.',
+        },
+        {
+          src: switcherUntil,
+          alt: 'ClaudeSwitcher snooze field with the text "Friday afternoon" resolved to a time',
+          caption:
+            'Setting a session aside until a time written in plain words, parsed locally without AI, with an instant preview of the resolved time.',
+        },
+      ],
+    },
     status: 'Active',
     icon: MonitorCog,
-    colorClass: 'text-rose-500',
+    colorClass: 'text-rose-700 dark:text-rose-400',
     bgClass: 'bg-rose-500/10',
     stripeClass: 'bg-rose-500/80',
     borderClass: 'hover:border-rose-500/50',
@@ -129,14 +228,26 @@ const projects: Project[] = [
     title: 'Self-hosted Infrastructure',
     category: 'DevOps',
     description:
-      'A Debian VPS running over a dozen containerised services behind Traefik, redeployed from git every five minutes. Secrets encrypted with sops, nightly restic backups to Cloudflare R2, admin tools reachable only over WireGuard.',
+      'One Debian VM running 19 containerised services behind Traefik, pulling its configuration from git every five minutes. Secrets encrypted with sops, nightly restic backups to Cloudflare R2, admin access only over WireGuard.',
     tech: ['Docker', 'Traefik', 'WireGuard', 'sops', 'restic'],
     link: null,
     secondaryLink: null,
-    gallery: null,
+    // Rendered from the infra repo's docs/portfolio/ SVGs. Generic labels only: no
+    // hosts, IPs, ports or service names that would map the attack surface.
+    gallery: {
+      label: 'Architecture',
+      images: [
+        {
+          src: infraArchitecture,
+          darkSrc: infraArchitectureDark,
+          alt: 'Architecture diagram: internet and admin traffic through a firewall to Traefik and WireGuard, grouped services, a git-driven deploy timer and backups to Cloudflare R2',
+          caption: 'Request, admin, redeploy and backup paths of a single-VM, git-driven Docker setup.',
+        },
+      ],
+    },
     status: 'Production',
     icon: Server,
-    colorClass: 'text-blue-500',
+    colorClass: 'text-blue-700 dark:text-blue-400',
     bgClass: 'bg-blue-500/10',
     stripeClass: 'bg-blue-500/80',
     borderClass: 'hover:border-blue-500/50',
@@ -146,31 +257,78 @@ const projects: Project[] = [
     title: 'Data Space AI Orchestrator',
     category: 'M.S. Thesis',
     description:
-      "A Claude-based mediator agent that turns a user's need into a chain of data-space services, querying the Prometheus-X catalog through an MCP server. A separate validator checks offerings in a structural and a SHACL layer.",
-    tech: ['Python', 'FastAPI', 'MCP', 'Claude API'],
+      'A Claude agent that turns a free-text need into a chain of data-space services in four auditable stages, through an MCP server. A SHACL validator checks every offering; after a human signs, two Prometheus-X connectors exchange the data.',
+    tech: ['Python', 'Claude API', 'MCP', 'SHACL', 'Prometheus-X'],
     link: null,
     secondaryLink: null,
-    gallery: null,
+    // Images and captions come from the thesis repo (portfolio/), shot on a live run.
+    // The web UI is Hungarian, like the thesis.
+    gallery: {
+      label: 'Screenshots',
+      images: [
+        {
+          src: thesisRequest,
+          hungarianUi: true,
+          alt: 'Orchestrator web UI: a free-text request and the decomposition stage with its data layers and policy',
+          caption:
+            'A free-text request (a company wants a training recommender built on the BME VIK course catalogue, non-commercial, EU only) broken down by Claude into data layers and a machine-readable policy.',
+        },
+        {
+          src: thesisPolicy,
+          hungarianUi: true,
+          alt: 'Policy and validation stage: a table of candidates with passed rules, a VALID validator verdict and scores',
+          caption:
+            'The policy stage: each candidate passes the region, commercial-use, PII and catalogue-entry rules, and the semantic validator marks the course catalogue VALID.',
+        },
+        {
+          src: thesisExchange,
+          hungarianUi: true,
+          alt: 'Data exchange result: verdict delivered, import success, 1,492 records and a sample of course records',
+          caption:
+            'After human approval and signature, two Prometheus-X connectors delivered 1,492 course records under the signed contract’s policy.',
+        },
+        {
+          src: thesisArchitecture,
+          darkSrc: thesisArchitectureDark,
+          alt: 'Architecture diagram: web UI, the four-stage mediator agent, the semantic validator, the MCP server and the Prometheus-X data space',
+          caption:
+            'Architecture: a four-stage Claude mediator proposes the service chain, a SHACL validator checks every offering, and only after a person signs do two Prometheus-X connectors exchange the data.',
+        },
+      ],
+    },
+    note: 'Code and thesis public after the defense',
     status: 'Research',
     icon: Bot,
-    colorClass: 'text-purple-500',
+    colorClass: 'text-purple-700 dark:text-purple-400',
     bgClass: 'bg-purple-500/10',
     stripeClass: 'bg-purple-500/80',
     borderClass: 'hover:border-purple-500/50',
     glowClass: 'group-hover:shadow-[0_0_20px_-5px_rgba(168,85,247,0.3)]',
   },
   {
-    title: 'Quanopt Analytics',
-    category: 'Enterprise Data Pipeline',
+    title: 'AI Exhibition Guide Platform',
+    category: 'Quanopt · AI Backend & Analytics',
     description:
-      'Scalable backend engine processing exhibition data via Google BigQuery. Automated statistical generation and data population for chatbots.',
-    tech: ['BigQuery', 'NestJS', 'GCP', 'Microservices'],
+      'The backend of an exhibition guide app: a Python AI service answers visitors in text and voice behind a NestJS gateway, and a nightly job turns BigQuery visitor events into some 25 cached reports for an admin dashboard.',
+    tech: ['NestJS', 'Python', 'OpenAI API', 'BigQuery'],
     link: null,
     secondaryLink: null,
-    gallery: null,
+    // A client project: generic labels only, no client names, data or screenshots.
+    gallery: {
+      label: 'Architecture',
+      images: [
+        {
+          src: quanoptArchitecture,
+          darkSrc: quanoptArchitectureDark,
+          alt: 'Architecture diagram: guide and admin apps, an API gateway, an AI service, a statistics service and their data sources',
+          caption:
+            'A NestJS gateway fronts an async Python AI service (LLM Q&A, realtime speech, credit billing) and a statistics service that aggregates visitor events from BigQuery nightly.',
+        },
+      ],
+    },
     status: 'Production',
-    icon: BarChart3,
-    colorClass: 'text-orange-500',
+    icon: MessagesSquare,
+    colorClass: 'text-orange-700 dark:text-orange-400',
     bgClass: 'bg-orange-500/10',
     stripeClass: 'bg-orange-500/80',
     borderClass: 'hover:border-orange-500/50',
@@ -189,7 +347,7 @@ export function Projects() {
       {/* Háttér dekoráció (finom gradiens folt a szekció alatt) */}
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 bg-primary/5 blur-[120px] -z-10 rounded-full pointer-events-none' />
 
-      <div className='flex flex-col md:flex-row justify-between items-end mb-16 gap-6'>
+      <div className='reveal flex flex-col md:flex-row justify-between items-end mb-16 gap-6'>
         <div className='space-y-2'>
           <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
             Selected Work
@@ -218,7 +376,7 @@ export function Projects() {
           <Card
             key={project.title}
             className={cn(
-              'relative flex flex-col h-full bg-background/60 backdrop-blur-xl border-border/60 transition-all duration-300 group overflow-hidden',
+              'reveal relative flex flex-col h-full bg-background/60 backdrop-blur-xl border-border/60 transition-all duration-300 group overflow-hidden hover:-translate-y-1 motion-reduce:hover:translate-y-0',
               project.borderClass,
               project.glowClass,
             )}
@@ -241,23 +399,38 @@ export function Projects() {
                 >
                   <project.icon className='w-6 h-6' />
                 </div>
-                <Badge
-                  variant='secondary'
-                  className='font-mono text-[10px] tracking-wider uppercase opacity-70'
-                >
-                  {project.status}
-                </Badge>
+                <div className='flex items-center gap-1'>
+                  {/* The source link sits here, so the footer keeps at most two buttons. */}
+                  {project.link && (
+                    <Link
+                      href={project.link}
+                      target='_blank'
+                      aria-label={`${project.title} source code on GitHub`}
+                      title='Source code'
+                      className={cn(
+                        buttonVariants({ variant: 'ghost', size: 'icon-sm' }),
+                        'text-muted-foreground hover:text-primary',
+                      )}
+                    >
+                      <GithubIcon className='w-4 h-4' />
+                    </Link>
+                  )}
+                  <Badge
+                    variant='secondary'
+                    className='font-mono text-[10px] tracking-wider uppercase opacity-70'
+                  >
+                    {project.status}
+                  </Badge>
+                </div>
               </div>
 
               <CardTitle className='text-xl font-bold group-hover:text-foreground transition-colors'>
                 {project.title}
               </CardTitle>
+              {/* Full color, no opacity: the 12px category needs 4.5:1, and the -700/-400
+                  shades in colorClass reach it on both themes. */}
               <CardDescription
-                className={cn(
-                  'font-medium text-xs uppercase tracking-widest mt-1',
-                  project.colorClass,
-                  'opacity-80',
-                )}
+                className={cn('font-medium text-xs uppercase tracking-widest mt-1', project.colorClass)}
               >
                 {project.category}
               </CardDescription>
@@ -280,28 +453,20 @@ export function Projects() {
             </CardContent>
 
             <CardFooter className='pt-2 mt-auto gap-2 flex-col items-stretch'>
-              {project.gallery && (
-                // flex-none: in the footer's column, flex-1 would squash its height.
-                <ProjectGallery
-                  title={project.title}
-                  images={project.gallery}
-                  className={cn(footerButtonClass, 'flex-none')}
-                />
-              )}
-              {/* Its own row, not a wrapping one: two links only just fit side by side,
-                  and a wrapping row would stack them instead of shrinking them. */}
-              {(project.secondaryLink || project.link) && (
+              {(project.gallery || project.secondaryLink) && (
                 <div className='flex gap-2'>
+                  {project.gallery && (
+                    <ProjectGallery
+                      title={project.title}
+                      label={project.gallery.label}
+                      images={project.gallery.images}
+                      className={footerButtonClass}
+                    />
+                  )}
                   {project.secondaryLink && (
                     <Link href={project.secondaryLink.href} target='_blank' className={footerButtonClass}>
                       <ExternalLink className='w-4 h-4' />
                       {project.secondaryLink.label}
-                    </Link>
-                  )}
-                  {project.link && (
-                    <Link href={project.link} target='_blank' className={footerButtonClass}>
-                      <GithubIcon className='w-4 h-4' />
-                      Source Code
                     </Link>
                   )}
                 </div>
@@ -316,6 +481,9 @@ export function Projects() {
                   <Lock className='w-3 h-3' />
                   Private Repository
                 </Button>
+              )}
+              {project.note && (
+                <p className='text-center font-mono text-[11px] text-muted-foreground'>{project.note}</p>
               )}
             </CardFooter>
           </Card>

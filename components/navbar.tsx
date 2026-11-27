@@ -6,9 +6,11 @@ import { GithubIcon, LinkedinIcon } from '@/components/brand-icons';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Each id must match a section's id attribute (components/projects.tsx, about.tsx, contact.tsx).
+// Each id must match a section's id attribute (components/projects.tsx, experience.tsx,
+// about.tsx, contact.tsx).
 const sections = [
   { id: 'projects', label: 'Projects' },
+  { id: 'experience', label: 'Experience' },
   { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ];
