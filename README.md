@@ -83,6 +83,7 @@ The CV's LaTeX source is `cv/cv.tex`. After changing it, run `pnpm cv` (needs a 
 │   ├── hero.tsx               # Main landing section
 │   ├── projects.tsx           # Project showcase grid
 │   ├── project-gallery.tsx    # Screenshot dialog of a project card
+│   ├── experience.tsx         # Work and education timeline (mirrors cv/cv.tex)
 │   ├── about.tsx              # Engineering philosophy & stack
 │   └── contact.tsx            # Formspree integration
 ├── lib
