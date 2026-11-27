@@ -143,3 +143,24 @@
   }
 }
 
+
+/* Fades an element in as it scrolls into view. CSS only: no script, no hydration. Where
+   scroll-driven animations are unsupported, or the visitor asks for reduced motion, the
+   element simply shows, so content can never stay hidden. Uses `transform`, not
+   `translate`, so it composes with Tailwind's hover translate utilities. */
+@utility reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 35%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(3rem) scale(0.97);
+  }
+}

@@ -24,7 +24,7 @@ export function Contact() {
     >
       {/* KONZISZTENS HEADER (Balra igazítva, mint a többi) */}
       <div className='flex flex-col md:flex-row justify-between items-end mb-12 gap-4 md:gap-6'>
-        <div className='space-y-2'>
+        <div className='reveal space-y-2'>
           <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
             Let&apos;s work together <span className='text-primary'>.</span>
           </h2>
@@ -37,7 +37,7 @@ export function Contact() {
 
       <div className='grid grid-cols-1 md:grid-cols-3 gap-8 items-start'>
         {/* Jobb Oldal: Űrlap (2 egység) */}
-        <Card className='md:col-span-2 border-border/60 shadow-lg shadow-primary/5'>
+        <Card className='reveal md:col-span-2 border-border/60 shadow-lg shadow-primary/5'>
           <CardContent className='p-8 md:p-10'>
             {/* SIKERES KÜLDÉS UTÁNI ÁLLAPOT */}
             {state.succeeded ? (
@@ -159,7 +159,7 @@ export function Contact() {
         </Card>
 
         {/* Bal Oldal: Kontakt (1 egység) */}
-        <Card className='md:col-span-1 bg-linear-to-br from-primary/5 via-background to-background border-primary/10 h-full'>
+        <Card className='reveal md:col-span-1 bg-linear-to-br from-primary/5 via-background to-background border-primary/10 h-full'>
           <CardContent className='p-8 flex flex-col h-full space-y-8'>
             <div>
               <h3 className='font-bold text-xl mb-2'>Contact Details</h3>

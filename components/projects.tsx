@@ -347,7 +347,7 @@ export function Projects() {
       {/* Háttér dekoráció (finom gradiens folt a szekció alatt) */}
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 bg-primary/5 blur-[120px] -z-10 rounded-full pointer-events-none' />
 
-      <div className='flex flex-col md:flex-row justify-between items-end mb-16 gap-6'>
+      <div className='reveal flex flex-col md:flex-row justify-between items-end mb-16 gap-6'>
         <div className='space-y-2'>
           <h2 className='text-3xl md:text-4xl font-bold tracking-tight'>
             Selected Work
@@ -376,7 +376,7 @@ export function Projects() {
           <Card
             key={project.title}
             className={cn(
-              'relative flex flex-col h-full bg-background/60 backdrop-blur-xl border-border/60 transition-all duration-300 group overflow-hidden',
+              'reveal relative flex flex-col h-full bg-background/60 backdrop-blur-xl border-border/60 transition-all duration-300 group overflow-hidden hover:-translate-y-1 motion-reduce:hover:translate-y-0',
               project.borderClass,
               project.glowClass,
             )}
